@@ -1,0 +1,3 @@
+if [ "$string" ]; then
+	echo -n $FT_LINE | wc -m
+fi
