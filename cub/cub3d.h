@@ -164,7 +164,7 @@ typedef struct s_cub
 	int f;	 // 바닥
 	int c;	 // 천장
 	int map; // 맵파일
-	int all; // 변수 모든것
+	int all; // 변수 카운트
 } t_cub;
 
 typedef struct s_main
