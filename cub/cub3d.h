@@ -16,13 +16,13 @@
 #define KEY_LEFT 123
 #define KEY_RIGHT 124
 
-#define PLANE 0.66
-#define SPEED 0.3
-#define ROTATE 0.25
+#define PLANE 0.66	//카메라 평면 위치?
+#define SPEED 0.3	//움직이는 속도
+#define ROTATE 0.25 //회전행렬 속도[방향키로 회전 <- ->]
 
-#define U_DIV 1
-#define V_DIV 1
-#define V_MOVE 0.0
+#define U_DIV 1	   //디비전?
+#define V_DIV 1	   //디비전?
+#define V_MOVE 0.0 //무브..?
 
 typedef struct s_bmp
 {
@@ -33,14 +33,14 @@ typedef struct s_bmp
 	unsigned char info[40];
 	unsigned char color[4];
 } t_bmp;
-
+// get_img_data_addr 함수에서 쓸 변수를 갖고 있는 구조체.
 typedef struct s_img
 {
 	void *img;
 	char *data;
-	int w;	 //width
-	int h;	 //height
-	int bpp; //파일
+	int w;
+	int h;
+	int bpp;
 	int len;
 	int endian;
 } t_img;
@@ -56,33 +56,33 @@ typedef struct s_texture
 	int endian;
 	char *path;
 } t_texture;
-
+//DDA 알고리즘 구조체
 typedef struct s_dda_var
 {
-	int i;
-	double camera_x;
-	double ray_x;
-	double ray_y;
-	int map_x;
-	int map_y;
-	double side_x;
-	double side_y;
-	double delta_x;
-	double delta_y;
+	int i;			 //인덱스
+	double camera_x; //x값이 카메라 평면 상에 있을 때의 x좌표
+	double ray_x;	 //현재 위치에서 다음 x사이드까지의 거리
+	double ray_y;	 //현재 위치에서 다음 y사이드까지의 거리
+	int map_x;		 //현재 player가 위치한 맵 내 위치
+	int map_y;		 //현재 player가 위치한 맵 내 위치
+	double side_x;	 //다음 map박스로 이동하거나 x방향으로 이동한다.
+	double side_y;	 //다음 map박스로 이동하거나 y방향으로 이동한다.
+	double delta_x;	 //delta_x 첫 번째 x면에서 그 다음 x면까지의 광선의 이동거리
+	double delta_y;	 //delta_y 첫 번째 y면에서 그 다음 y면까지의 광선의 이동거리
 	double wall_dist;
-	int step_x;
-	int step_y;
-	int hit;
+	int step_x; //x방향으로 한 칸
+	int step_y; //y방향으로 한 칸
+	int hit;	//hit은 벽과 부딪혔는지 판별하기 위한 변수.
 	int side;
 	int line_h;
 	int draw_start;
 	int draw_end;
 	t_texture texture;
-	double wallx;
-	int tex_x;
+	double wallx; //wallx 의 값은 벽의 int형 좌표가 아닌 double형 좌표로 벽의 정확히 어디에 부딪혔는지를 나타냅니다.
+	int tex_x;	  //텍스쳐의 x좌표
+	int tex_y;	  //텍스터의 y좌표
 	unsigned color;
 	double step;
-	int tex_y;
 	double tex_pos;
 	int a;
 	char *dst;
@@ -94,40 +94,40 @@ typedef struct s_dda_var
 	double transform_y;
 	int sprite_screen_x;
 	int v_movescreen;
-	int sprite_h;
-	int drawstart_y;
-	int drawend_y;
 	int sprite_w;
+	int sprite_h;
 	int drawstart_x;
 	int drawend_x;
+	int drawstart_y;
+	int drawend_y;
+	int d;
 	int d_x;
 	int d_y;
-	int d;
 } t_dda_var;
 
 typedef struct s_map
 {
 	char **map;
 	char **tem;
-	int x;
-	int y;
+	int x; //x 좌표
+	int y; //y 좌표
 	int checkend;
-	int user;
-	int spr;
+	int user; //유저
+	int spr;  //스프라이트
 } t_map;
-
+//플레이어의 초기 위치벡터
 typedef struct s_pos
 {
 	double x; //x좌표
 	double y; //y좌표
 } t_pos;	  //유저 위치
-
+//플레이어의 초기 방향벡터
 typedef struct s_dir
 {
 	double x; //x좌표
 	double y; //y좌표
 } t_dir;
-
+//플레이어의 카메라 평면
 typedef struct s_plane
 {
 	double x; //x좌표
@@ -145,13 +145,13 @@ typedef struct s_sort
 	int order;		 //요청?
 	double distance; //거리
 } t_sort;			 //분류
-
+//천장과 땅의 컬러 구조체
 typedef struct s_color
 {
 	unsigned int f; //floor
 	unsigned int c; //celling
 } t_color;
-
+//map.cub 구조체
 typedef struct s_cub
 {
 	int i;	 // map.cub [i]인덱스
@@ -166,28 +166,28 @@ typedef struct s_cub
 	int map; // 맵파일
 	int all; // 변수 카운트
 } t_cub;
-
+//main 종합 구조체
 typedef struct s_main
 {
-	void *mlx;		//mlx
-	void *win;		//mlx widow
-	int w;			//width
-	int h;			//height
-	int save;		//저장
-	int num_sprite; //
-	int x;			//x좌표
-	int y;			//y좌표
-	int len;		//길이?
-	t_img img;
-	t_texture tex[5]; //e,w,s,n,sp
-	t_map map;
-	t_pos pos;
-	t_dir dir;
-	t_plane plane;
-	t_dda_var v;
-	t_sprite *sp;
-	t_color color;
-	t_cub cub;
+	void *mlx;		  //mlx
+	void *win;		  //mlx widow
+	int w;			  //width
+	int h;			  //height
+	int save;		  //저장
+	int num_sprite;	  //
+	int x;			  //x좌표
+	int y;			  //y좌표
+	int len;		  //길이?
+	t_img img;		  //이미지 구조체
+	t_texture tex[5]; //선택된 텍스처종류를 나타내는 변수[동 서 남 북 스프라이트]
+	t_map map;		  //map 구조체
+	t_pos pos;		  //플레이어의 초기 위치 구조체
+	t_dir dir;		  //플레이어의 초기 방향벡터 구조체
+	t_plane plane;	  //플레이어의 카메라평면 구조체
+	t_dda_var v;	  //DDA 알고리즘 구조체
+	t_sprite *sp;	  //스프라이트 구조체
+	t_color color;	  //천장과 땅의 컬러 구조체
+	t_cub cub;		  //map.cub 구조체
 } t_main;
 
 void ft_init_info(t_main *m);

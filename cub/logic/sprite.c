@@ -1,10 +1,10 @@
 #include "../cub3d.h"
 
-void ft_sprite_distance(t_main *m, t_sort *sprite_sort)
+void ft_sprite_distance(t_main *m, t_sort *sprite_sort) //스프라이트 거리
 {
 	sprite_sort[m->v.i].order = m->v.i;
 	sprite_sort[m->v.i].distance =
-		((m->pos.x - m->sp[m->v.i].x) * (m->pos.x - m->sp[m->v.i].x) + (m->pos.y - m->sp[m->v.i].y) * (m->pos.y - m->sp[m->v.i].y));
+		((m->pos.x - m->sp[m->v.i].x) * (m->pos.x - m->sp[m->v.i].x) + (m->pos.y - m->sp[m->v.i].y) * (m->pos.y - m->sp[m->v.i].y)); //(유저의 x좌표 - sp[i].x) * (유저의 x좌표 - sp[i].x) + (유저의 y좌표 - sp[i].y) * (유저의 y좌표 - sp[i].y))
 }
 
 void ft_sort_sprites(t_main *m, t_sort *sprite_sort)

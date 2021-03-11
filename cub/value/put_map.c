@@ -1,12 +1,12 @@
 #include "../cub3d.h"
 
-char *ft_put_map_value(char *line, int len, int y)
+char *ft_put_map_value(char *line, int len, int y) //맵에 값 넣는 함수
 {
 	int i;
 	char *value;
 
 	if (!(value = (char *)malloc((y + 1) * sizeof(char))))
-		ft_put_massage(14);
+		ft_put_massage(14); //할당 실패 에러 출력
 	i = -1;
 	while (++i < y)
 		value[i] = 'n';
@@ -20,7 +20,7 @@ char *ft_put_map_value(char *line, int len, int y)
 	return (value);
 }
 
-void ft_copy_map(char **dest, char **array, int x, t_main *m)
+void ft_copy_map(char **dest, char **array, int x, t_main *m) //맵의 y좌표 값을 x좌표값에 복사
 {
 	int i;
 
@@ -53,7 +53,7 @@ void ft_put_map(t_main *m, char *line, int *x, int *y)
 	if (m->map.map != NULL)
 	{
 		if (!(m->map.tem = (char **)malloc((m->x + 1) * sizeof(char *))))
-			ft_put_massage(14);
+			ft_put_massage(14); //할당 실패 에러 처리
 		ft_copy_map(m->map.tem, m->map.map, m->x, m);
 		ft_free_array(m->map.map);
 		m->cub.map = 1;
