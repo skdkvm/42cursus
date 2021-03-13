@@ -6,84 +6,82 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 14:23:27 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/05 17:16:50 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/13 13:36:50 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t ft_strlen_g(const char *s)
+int ft_strlen_g(char *str)
 {
-	const char *str;
+	int len;
 
-	str = s;
-	while (*str)
-		str++;
-	return (str - s);
+	len = 0;
+	if (!str)
+		return (0);
+	while (str[len])
+		len++;
+	return (len);
 }
 
-char *ft_strjoin_g(char const *s1, char const *s2)
+char *ft_strchr_g(char *str, int c)
 {
-	size_t len;
-	char *p;
-	char *start;
+	int i;
 
-	if (!s1 || !s2)
+	i = 0;
+	if (!str)
 		return (NULL);
-	len = ft_strlen_g(s2) + ft_strlen_g(s1);
-	p = (char *)malloc(sizeof(char) * (len + 1));
-	if (!p)
-		return (NULL);
-	start = p;
-	while (len-- && *s1)
-		*p++ = *s1++;
-	len++;
-	while (len-- && *s2)
-		*p++ = *s2++;
-	*p = '\0';
-	return (start);
-}
-
-char *ft_strchr_g(const char *s, int c)
-{
-	while (*s)
+	while (str[i])
 	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
+		if (str[i] == c)
+			return (&str[i]);
+		i++;
 	}
-	if ((char)c == *s)
-		return ((char *)s);
-	return ((char *)NULL);
+	if (str[i] == c)
+		return (&str[i]);
+	return (NULL);
 }
 
-char *ft_strdup_g(const char *s)
+char *ft_strdup_g(const char *src)
 {
-	char *p;
-	char *start;
+	char *result;
+	int i;
 
-	p = (char *)malloc(sizeof(char) * (ft_strlen_g(s) + 1));
-	if (!(p))
-		return (NULL);
-	start = p;
-	while (*s)
-		*p++ = *s++;
-	*p = '\0';
-	return (start);
-}
-
-t_lists *ft_lstnew_g(void *content, int fd)
-{
-	t_lists *element;
-
-	element = (t_lists *)malloc(sizeof(t_lists));
-	if (!element)
+	i = 0;
+	while (src[i])
+		i++;
+	result = (char *)malloc(sizeof(char) * i + 1);
+	if (result == 0)
+		return (0);
+	i = 0;
+	while (src[i])
 	{
-		free(content);
-		return (NULL);
+		result[i] = src[i];
+		i++;
 	}
-	element->content = content;
-	element->fd = fd;
-	element->next = NULL;
-	return (element);
+	result[i] = '\0';
+	return (result);
+}
+
+char *ft_strjoin_g(char *s1, char *s2)
+{
+	char *s3;
+	int i;
+
+	if (!(s3 = (char *)malloc(sizeof(char) *
+							  (ft_strlen_g(s1) + ft_strlen_g(s2) + 1))))
+		return (NULL);
+	i = 0;
+	while (*s1 != '\0')
+	{
+		s3[i] = *s1++;
+		i++;
+	}
+	while (*s2 != '\0')
+	{
+		s3[i] = *s2++;
+		i++;
+	}
+	s3[i] = '\0';
+	return (s3);
 }

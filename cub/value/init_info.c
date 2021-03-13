@@ -48,6 +48,6 @@ void ft_init_info(t_main *m) //모든 정보 초기화
 	m->dir.y = 0;		 //유저 초기 방향벡터 y좌표
 	m->plane.x = 0;		 //유저의 카메라 평면 x좌표
 	m->plane.y = 0;		 //유저의 카메라 평면 y좌표
-	m->sp = NULL;
+	m->sp = NULL;		 //스프라이트
 	ft_init_info_cub(m);
 }

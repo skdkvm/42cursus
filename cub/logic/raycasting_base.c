@@ -27,7 +27,7 @@ rayDirectionX가 양수일 경우 sideDistX는
 mapX + 1에서 실제 위치 playerPositionX를 빼주고 deltaDistX를 곱한 결과다.
 반대의 경우 playerPositionX에서 mapX를 빼주고 deltaDistX를 곱한 결과다.
 */
-void ft_raycasting_get_side_xy(t_main *m)
+void ft_raycasting_get_side_xy(t_main *m) // 단계 및 초기 sideDist 계산
 {
 	if (m->v.ray_x < 0)
 	{
@@ -57,9 +57,9 @@ DDAgorithm 세팅을 완료했고, 이제 그것을 시작하는 부분.
 만약 광선의 방향이 x축 방향과 완전히 일치한다면, x방향으로만 한 칸 점프하면 됨.
 광선이 점프할 때마다 <sideDistX, Y>에는 <deltaDistX, Y>가 더해지면서 업데이트됨.
 */
-void ft_raycasting_get_map_xy(t_main *m) //
+void ft_raycasting_get_map_xy(t_main *m)
 {
-	while (m->v.hit == 0)
+	while (m->v.hit == 0) //벽에 부딪혔습니까?
 	{
 		//다음 map박스로 이동하거나 x,y방향 둘 중 하나로 이동한다.;
 		if (m->v.side_x < m->v.side_y)
@@ -97,7 +97,7 @@ void ft_raycasting_get_map_xy(t_main *m) //
     mapX - playerPostionX가 음수더라도 음수인 rayDirectionX로 나누기 때문에
     계산된 값은 항상 양수.
 	*/
-	if (m->v.side == 0)
+	if (m->v.side == 0) //벽이 맞은 위치
 		m->v.wall_dist =
 			(m->v.map_x - m->pos.x + (1 - m->v.step_x) / 2) / m->v.ray_x;
 	else

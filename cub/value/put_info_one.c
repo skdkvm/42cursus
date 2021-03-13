@@ -67,4 +67,5 @@ void ft_put_background(t_main *m, char *line, int c, int *cub)
 	if (c == 'F')																			   //Floor 천장
 		m->color.f = (ft_atoi(array[1]) << 16) + (ft_atoi(array[2]) << 8) + ft_atoi(array[3]); //즉 지정한 횟수대로 비트를 이동시키며 모자라는 공간은 0으로 채웁니다. 연산자 모양 그대로 <<는 왼쪽, >>는 오른쪽 방향입니다.
 	ft_free_array(array);
+	// 문자열을 정수로 변환후 시프트연산을 통해서 R,G,B값을 넣어줌
 }

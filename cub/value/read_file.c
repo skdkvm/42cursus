@@ -1,10 +1,20 @@
 #include "../cub3d.h"
 #include <stdio.h>
 
-void ft_check_all_info(t_main *m) //R, NO, SO, WE, EA, S, F, C의 정보
+void ft_check_all_info(t_main *m) //R, NO, SO, WE, EA, SP, F, C의 정보
 {
 	if (m->cub.all != 8 || m->map.map == 0) //cub구조체의 모든 정보가 8개가 들어왔는지 확인 || 맵이 있는지 확인
-		ft_put_massage(13);					//충분한 정보가 들어오지 않았다 에러 처리
+	{
+		printf("R = %d\n", m->cub.r);
+		printf("NO = %d\n", m->cub.n);
+		printf("SO = %d\n", m->cub.s);
+		printf("WE = %d\n", m->cub.w);
+		printf("EA = %d\n", m->cub.e);
+		printf("SP = %d\n", m->cub.sp);
+		printf("F = %d\n", m->cub.f);
+		printf("C = %d\n", m->cub.c);
+	}
+	//ft_put_massage(13); //충분한 정보가 들어오지 않았다 에러 처리
 }
 
 void ft_check_name(char *filename, char *str)
@@ -52,7 +62,9 @@ void ft_save_info(t_main *m, char *line, int i) //저장된 map.cub정보
 		ft_put_map(m, line, &m->map.x, &m->map.y);
 	while (line[i] == ' ' || (line[i] >= 9 && line[i] <= 13)) // null, \n, space, 수직tab, 수평tab
 		(i)++;
-	if (line[i] == 'R' && line[i + 1] == ' ')
+	//printf("%c: %d\n", line[i], ft_isspace(line[i + 1]));
+	if (line[i] == 'R' && ft_isspace(line[i + 1]))
+		//	printf("*\n");
 		ft_put_map_size(m, line);
 	if (line[i] == 'N' && line[i + 1] == 'O' && ft_isspace(line[i + 2]))
 		ft_put_texture(m, line, 0, &m->cub.n);
@@ -62,11 +74,11 @@ void ft_save_info(t_main *m, char *line, int i) //저장된 map.cub정보
 		ft_put_texture(m, line, 2, &m->cub.w);
 	if (line[i] == 'E' && line[i + 1] == 'A' && ft_isspace(line[i + 2]))
 		ft_put_texture(m, line, 3, &m->cub.e);
-	if (line[i] == 'S' && line[i + 1] == ' ')
+	if (line[i] == 'S' && line[i + 1] == 'P')
 		ft_put_texture(m, line, 4, &m->cub.sp);
-	if (line[i] == 'F' && line[i + 1] == ' ')
+	if (line[i] == 'F' && ft_isspace(line[i + 1]))
 		ft_put_background(m, line, 'F', &m->cub.f);
-	if (line[i] == 'C' && line[i + 1] == ' ')
+	if (line[i] == 'C' && ft_isspace(line[i + 1]))
 		ft_put_background(m, line, 'C', &m->cub.c);
 }
 

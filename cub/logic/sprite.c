@@ -1,13 +1,13 @@
 #include "../cub3d.h"
 
-void ft_sprite_distance(t_main *m, t_sort *sprite_sort) //스프라이트 거리
+void ft_sprite_distance(t_main *m, t_sort *sprite_sort) //스프라이트 거리를 구하고 정렬한다
 {
 	sprite_sort[m->v.i].order = m->v.i;
 	sprite_sort[m->v.i].distance =
 		((m->pos.x - m->sp[m->v.i].x) * (m->pos.x - m->sp[m->v.i].x) + (m->pos.y - m->sp[m->v.i].y) * (m->pos.y - m->sp[m->v.i].y)); //(유저의 x좌표 - sp[i].x) * (유저의 x좌표 - sp[i].x) + (유저의 y좌표 - sp[i].y) * (유저의 y좌표 - sp[i].y))
 }
 
-void ft_sort_sprites(t_main *m, t_sort *sprite_sort)
+void ft_sort_sprites(t_main *m, t_sort *sprite_sort) //스프라이트 정렬
 {
 	t_sort tmp;
 	int i;
@@ -32,12 +32,12 @@ void ft_sort_sprites(t_main *m, t_sort *sprite_sort)
 	m->v.i = -1;
 }
 
-void ft_sprite_set_info(t_main *m, t_sort *sprite_sort)
+void ft_sprite_set_info(t_main *m, t_sort *sprite_sort) //스프라이트 위치 정보
 {
 	m->v.num = sprite_sort[m->v.i].order;
-	m->v.texture = m->tex[4];
-	m->v.sprite_x = m->sp[m->v.num].x - m->pos.x;
-	m->v.sprite_y = m->sp[m->v.num].y - m->pos.y;
+	m->v.texture = m->tex[4];					  //tex[4] 스프라이트를 뜻함
+	m->v.sprite_x = m->sp[m->v.num].x - m->pos.x; //화면에서 보이는 좌우
+	m->v.sprite_y = m->sp[m->v.num].y - m->pos.y; //화면에서 보이는 앞뒤
 	m->v.invdet =
 		1.0 / (m->plane.x * m->dir.y - m->dir.x * m->plane.y);
 	m->v.transform_x = m->v.invdet *
@@ -50,7 +50,7 @@ void ft_sprite_set_info(t_main *m, t_sort *sprite_sort)
 	m->v.sprite_h = abs((int)(m->h / (m->v.transform_y))) / V_DIV;
 }
 
-void ft_sprite_get_draw_info(t_main *m)
+void ft_sprite_get_draw_info(t_main *m) //스프라이트를 그리기 위한 정보
 {
 	m->v.drawstart_y = -m->v.sprite_h / 2 + m->h / 2 + m->v.v_movescreen;
 	if (m->v.drawstart_y < 0)

@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-int ft_close(t_main *m) //화면 닫기
+int ft_close(t_main *m)
 {
 	ft_free_array(m->map.map);
 	free(m->sp);
@@ -22,7 +22,7 @@ int main_loop(t_main *m)
 	t_sort sprite_sort[m->map.spr];
 
 	m->v.i = -1;
-	while (++m->v.i < m->w) //인덱스가 width 값보다 커질때까지 반복
+	while (++m->v.i < m->w)
 	{
 		ft_raycasting_set_info(m);		//DDAgorithm 초기화
 		ft_raycasting_get_side_xy(m);	//DDAgorithm을 시작하기 전에 stepX, Y 그리고 sideDistX, Y에 값을 넣어주는 부분이다.

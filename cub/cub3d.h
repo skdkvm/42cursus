@@ -2,6 +2,7 @@
 #define CUB3D_H
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
 #include <fcntl.h>
 #include "./mlx/mlx.h"
@@ -16,13 +17,13 @@
 #define KEY_LEFT 123
 #define KEY_RIGHT 124
 
-#define PLANE 0.66	//카메라 평면 위치?
+#define PLANE 0.66	//카메라 평면 위치
 #define SPEED 0.3	//움직이는 속도
 #define ROTATE 0.25 //회전행렬 속도[방향키로 회전 <- ->]
 
-#define U_DIV 1	   //디비전?
-#define V_DIV 1	   //디비전?
-#define V_MOVE 0.0 //무브..?
+#define U_DIV 1
+#define V_DIV 1
+#define V_MOVE 0.0
 
 typedef struct s_bmp
 {
@@ -59,20 +60,20 @@ typedef struct s_texture
 //DDA 알고리즘 구조체
 typedef struct s_dda_var
 {
-	int i;			 //인덱스
-	double camera_x; //x값이 카메라 평면 상에 있을 때의 x좌표
-	double ray_x;	 //현재 위치에서 다음 x사이드까지의 거리
-	double ray_y;	 //현재 위치에서 다음 y사이드까지의 거리
-	int map_x;		 //현재 player가 위치한 맵 내 위치
-	int map_y;		 //현재 player가 위치한 맵 내 위치
-	double side_x;	 //다음 map박스로 이동하거나 x방향으로 이동한다.
-	double side_y;	 //다음 map박스로 이동하거나 y방향으로 이동한다.
-	double delta_x;	 //delta_x 첫 번째 x면에서 그 다음 x면까지의 광선의 이동거리
-	double delta_y;	 //delta_y 첫 번째 y면에서 그 다음 y면까지의 광선의 이동거리
-	double wall_dist;
-	int step_x; //x방향으로 한 칸
-	int step_y; //y방향으로 한 칸
-	int hit;	//hit은 벽과 부딪혔는지 판별하기 위한 변수.
+	int i;			  //인덱스
+	double camera_x;  //x값이 카메라 평면 상에 있을 때의 x좌표
+	double ray_x;	  //현재 위치에서 다음 x사이드까지의 거리
+	double ray_y;	  //현재 위치에서 다음 y사이드까지의 거리
+	int map_x;		  //현재 player가 위치한 맵 내 위치
+	int map_y;		  //현재 player가 위치한 맵 내 위치
+	double side_x;	  //다음 map박스로 이동하거나 x방향으로 이동한다.
+	double side_y;	  //다음 map박스로 이동하거나 y방향으로 이동한다.
+	double delta_x;	  //delta_x 첫 번째 x면에서 그 다음 x면까지의 광선의 이동거리
+	double delta_y;	  //delta_y 첫 번째 y면에서 그 다음 y면까지의 광선의 이동거리
+	double wall_dist; //벽 거리
+	int step_x;		  //x방향으로 한 칸
+	int step_y;		  //y방향으로 한 칸
+	int hit;		  //hit은 벽과 부딪혔는지 판별하기 위한 변수.
 	int side;
 	int line_h;
 	int draw_start;

@@ -6,134 +6,53 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 14:34:05 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/05 17:15:58 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/13 15:32:20 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char *ft_get_residual(t_lists **residual, int fd)
+int ft_null(char **line, char **stack, char *tmp)
 {
-	t_lists *tmp;
+	char *save;
 
-	if (!(*residual))
+	if (tmp)
 	{
-		*residual = ft_lstnew_g(ft_strdup_g(""), fd);
-		if (!(*residual) || ((*residual)->content == NULL))
-			return (NULL);
-		return ((*residual)->content);
+		*tmp = '\0';
+		*line = ft_strdup_g(*stack);
+		save = ft_strdup_g(tmp + 1);
+		free(*stack);
+		*stack = save;
+		return (1);
 	}
-	tmp = *residual;
-	while ((tmp->fd != fd) && (tmp->next))
-		tmp = tmp->next;
-	if (tmp->fd == fd)
-		return (tmp->content);
-	tmp->next = ft_lstnew_g(ft_strdup_g(""), fd);
-	if (!(tmp->next) || (tmp->next->content == NULL))
-		return (NULL);
-	return (tmp->next->content);
-}
-
-static int check_residual(char **line, t_lists **residual, int fd)
-{
-	char *pos;
-	void *str_residual;
-	char *tmp;
-
-	str_residual = ft_get_residual(residual, fd);
-	if (!str_residual || !line)
-		return (-1);
-	pos = ft_strchr_g((char *)str_residual, '\n');
-	if (!pos)
-	{
-		*line = ft_strdup_g((char *)str_residual);
-		if (*line)
-			return (1);
-		return (-1);
-	}
-	*pos++ = '\0';
-	*line = ft_strdup_g((char *)str_residual);
-	if (*line == NULL)
-		return (-1);
-	tmp = (char *)str_residual;
-	while (*pos)
-		*tmp++ = *pos++;
-	*tmp = '\0';
+	*line = *stack;
+	*stack = NULL;
 	return (0);
-}
-
-static int free_memory(t_lists **residuals, int fd)
-{
-	t_lists *tmp;
-	t_lists *residual;
-
-	residual = *residuals;
-	if (!residual)
-		return (-1);
-	tmp = residual;
-	while ((residual->fd != fd) && (residual->next))
-	{
-		tmp = residual;
-		residual = residual->next;
-	}
-	if (residual->fd != fd)
-		return (-1);
-	free(residual->content);
-	if (tmp == residual)
-		*residuals = residual->next;
-	else
-		tmp->next = residual->next;
-	free(residual);
-	return (-1);
-}
-
-static int set_residual(int fd, t_lists **residuals, char *tmp)
-{
-	t_lists *residual;
-
-	residual = *residuals;
-	if (!residual)
-		return (-1);
-	while (residual->fd != fd)
-		residual = residual->next;
-	free(residual->content);
-	if (!tmp)
-		residual->content = ft_strdup_g("");
-	else
-		residual->content = ft_strdup_g(tmp);
-	if (residual->content == NULL)
-	{
-		free_memory(residuals, fd);
-		return (-1);
-	}
-	return (1);
 }
 
 int get_next_line(int fd, char **line)
 {
-	char buffer[BUFFER_SIZE + 1];
-	static t_lists *residuals;
+	static char *stack;
+	char *heap;
+	int readcnt;
 	char *tmp;
-	int r;
-	int flag;
 
-	if ((flag = check_residual(line, &residuals, fd)) <= 0)
-		return (flag == 0 ? 1 : free_memory(&residuals, fd));
-	while (flag && (r = read(fd, buffer, BUFFER_SIZE)) > 0 && *line)
+	if (!line || fd < 0 || BUFFER_SIZE <= 0)
+		return (-1);
+	if (!stack)
+		stack = ft_strdup_g("");
+	if (!(heap = (char *)malloc(BUFFER_SIZE + 1)))
+		return (-1);
+	while (!(tmp = ft_strchr_g(stack, '\n')) &&
+		   ((readcnt = read(fd, heap, BUFFER_SIZE)) > 0))
 	{
-		buffer[r] = '\0';
-		if ((tmp = ft_strchr_g(buffer, '\n')) && flag--)
-		{
-			*tmp++ = '\0';
-			r = set_residual(fd, &residuals, tmp);
-		}
-		tmp = *line;
-		*line = ft_strjoin_g(*line, buffer);
-		free(tmp);
+		heap[readcnt] = '\0';
+		tmp = ft_strjoin_g(stack, heap);
+		free(stack);
+		stack = tmp;
 	}
-	if (!(*line))
-		r = -1;
-	if (r == 0 || r == -1)
-		free_memory(&residuals, fd);
-	return ((r > 0) ? 1 : r);
+	if (readcnt < 0)
+		return (-1);
+	free(heap);
+	return (ft_null(line, &stack, tmp));
 }
