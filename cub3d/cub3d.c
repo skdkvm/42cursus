@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 21:13:37 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/24 21:16:27 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/26 16:36:05 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int			cub_close(t_main *m)
 
 int			key_press(int keycode, t_main *m)
 {
-	keypress_up_down(keycode, m);
-	keypress_left_right(keycode, m);
-	keypress_rotate(keycode, m);
+	key_up_down(keycode, m);
+	key_left_right(keycode, m);
+	key_rotate(keycode, m);
 	return (0);
 }
 
@@ -50,6 +50,16 @@ int			main_loop(t_main *m)
 	while (++m->v.i < m->map.spr)
 	{
 		sprite_set_info(m, sprite_sort);
+		sprite_set_info_2(m, sprite_sort);
+		sprite_get_draw_info(m);
+		sprite_put_info(m, z_buffer);
+	}
+	while (++m->v.i < m->map.spr2)
+		sprite_distance(m, sprite_sort);
+	sort_sprites(m, sprite_sort);
+	while (++m->v.i < m->map.spr2)
+	{
+		sprite_set_info_2(m, sprite_sort);
 		sprite_get_draw_info(m);
 		sprite_put_info(m, z_buffer);
 	}
@@ -63,17 +73,17 @@ int			main(int ac, char **av)
 
 	if (ac != 2 && ac != 3)
 		error_write(0);
-	if (m.save == 1)
-		bitmap(&m);
-	init_info(&m);
 	m.mlx = mlx_init();
+	init_info(&m);
 	read_file(&m, ac, av);
+	mlx_hook(m.win, 17, 0, &cub_close, &m);
+	mlx_hook(m.win, 2, 1L << 0, key_press, &m);
 	m.img.img = mlx_new_image(m.mlx, m.w, m.h);
 	m.img.data =
-			mlx_get_data_addr(m.img.img, &m.img.bpp, &m.img.len, &m.img.endian);
-	mlx_hook(m.win, 17, 0, &close, &m);
-	mlx_hook(m.win, 2, 1L << 0, key_press, &m);
+		mlx_get_data_addr(m.img.img, &m.img.bpp, &m.img.len, &m.img.endian);
 	mlx_loop_hook(m.mlx, &main_loop, &m);
+	if (m.save == 1)
+		bitmap(&m);
 	mlx_loop(m.mlx);
 	return (0);
 }

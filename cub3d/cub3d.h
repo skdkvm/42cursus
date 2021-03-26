@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 21:16:54 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/24 22:10:31 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/26 16:33:39 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ typedef struct		s_map
 	int				checkend;
 	int				user;
 	int				spr;
+	int				spr2;
 }					t_map;
 
 typedef struct		s_pos
@@ -154,6 +155,12 @@ typedef struct		s_sprite
 	double			y;
 }					t_sprite;
 
+typedef struct		s_sprite2
+{
+	double			x;
+	double			y;
+}					t_sprite2;
+
 typedef struct		s_sort
 {
 	int				order;
@@ -175,6 +182,7 @@ typedef struct		s_cub
 	int				n;
 	int				s;
 	int				sp;
+	int				sp2;
 	int				f;
 	int				c;
 	int				map;
@@ -193,13 +201,14 @@ typedef struct		s_main
 	int				y;
 	int				len;
 	t_img			img;
-	t_texture		tex[5];
+	t_texture		tex[6];
 	t_map			map;
 	t_pos			pos;
 	t_dir			dir;
 	t_plane			plane;
 	t_dda_var		v;
 	t_sprite		*sp;
+	t_sprite2		*sp2;
 	t_color			color;
 	t_cub			cub;
 }					t_main;
@@ -222,19 +231,19 @@ void				check_map(t_main *m);
 void				check_map_user(t_main *m);
 void				check_map_end(t_main *m, char *line);
 void				check_map_wall(t_main *m, int i, int j);
-void				keypress_up_down(int keycode, t_main *m);
-void				keypress_left_right(int keycode, t_main *m);
-void				keypress_rotate(int keycode, t_main *m);
+void				key_up_down(int keycode, t_main *m);
+void				key_left_right(int keycode, t_main *m);
+void				key_rotate(int keycode, t_main *m);
 void				raycasting_set(t_main *m);
 void				raycasting_side_xy(t_main *m);
 void				raycasting_map_xy(t_main *m);
 void				raycasting_texture_1(t_main *m);
 void				raycasting_texture_2(t_main *m);
 void				raycasting_texture_3(t_main *m, double *z_buffer);
-void				raycasting_texture_4(t_main *m);
 void				sprite_distance(t_main *m, t_sort *sprite_sort);
 void				sort_sprites(t_main *m, t_sort *sprite_sort);
 void				sprite_set_info(t_main *m, t_sort *sprite_sort);
+void				sprite_set_info_2(t_main *m, t_sort *sprite_sort);
 void				sprite_get_draw_info(t_main *m);
 void				sprite_put_info(t_main *m, double *z_buffer);
 void				bitmap(t_main *m);

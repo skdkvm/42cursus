@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 17:45:12 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/24 21:28:20 by seonggki         ###   ########.fr       */
+/*   Created: 2021/03/26 14:37:34 by seonggki          #+#    #+#             */
+/*   Updated: 2021/03/26 14:41:52 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void		put_map_size(t_main *m, char *line)
+void	put_map_size(t_main *m, char *line)
 {
 	char	**array;
 
@@ -34,7 +34,7 @@ void		put_map_size(t_main *m, char *line)
 	free_array(array);
 }
 
-void		put_texture(t_main *m, char *line, int i, int *cub)
+void	put_texture(t_main *m, char *line, int i, int *cub)
 {
 	char	**array;
 	int		fd;
@@ -51,13 +51,12 @@ void		put_texture(t_main *m, char *line, int i, int *cub)
 	++m->cub.all;
 	m->tex[i].img =
 		mlx_xpm_file_to_image(m->mlx, array[1], &m->tex[i].w, &m->tex[i].h);
-	m->tex[i].data =
-				(int *)mlx_get_data_addr(m->tex[i].img, &m->tex[i].bpp,
-									&m->tex[i].len, &m->tex[i].endian);
+	m->tex[i].data = (int *)mlx_get_data_addr(m->tex[i].img, &m->tex[i].bpp,
+											&m->tex[i].len, &m->tex[i].endian);
 	free_array(array);
 }
 
-void		put_background(t_main *m, char *line, int c, int *cub)
+void	put_background(t_main *m, char *line, int c, int *cub)
 {
 	int		i;
 	char	**array;
@@ -76,10 +75,10 @@ void		put_background(t_main *m, char *line, int c, int *cub)
 	(*cub) = 1;
 	++m->cub.all;
 	if (c == 'C')
-		m->color.c = (ft_atoi(array[1]) << 16)
-				+ (ft_atoi(array[2]) << 8) + ft_atoi(array[3]);
+		m->color.c = (ft_atoi(array[1]) << 16) +
+		(ft_atoi(array[2]) << 8) + ft_atoi(array[3]);
 	if (c == 'F')
-		m->color.f = (ft_atoi(array[1]) << 16)
-				+ (ft_atoi(array[2]) << 8) + ft_atoi(array[3]);
+		m->color.f = (ft_atoi(array[1]) << 16) +
+		(ft_atoi(array[2]) << 8) + ft_atoi(array[3]);
 	free_array(array);
 }

@@ -4,12 +4,12 @@ SRCS = cub3d.c \
 		./gnl/get_next_line.c \
 		./util/err.c \
 		./util/split.c \
-		./value/read_file.c \
-		./value/init_info.c \
-		./value/put_info_one.c \
-		./value/put_info_two.c \
-		./value/put_map.c \
-		./value/check_map.c \
+		./info/read_file.c \
+		./info/init_info.c \
+		./info/put_info_one.c \
+		./info/put_info_two.c \
+		./info/put_map.c \
+		./info/check_map.c \
 		./raycasting/raycasting_base.c \
 		./raycasting/raycasting_texture.c \
 		./raycasting/sprite.c \

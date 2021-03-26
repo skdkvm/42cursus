@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   put_info_two.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 17:46:12 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/24 17:46:12 by seonggki         ###   ########.fr       */
+/*   Created: 2021/03/26 14:37:29 by seonggki          #+#    #+#             */
+/*   Updated: 2021/03/26 16:34:09 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void		find_pos_two(t_main *m, char c)
+void	find_pos_two(t_main *m, char c)
 {
 	if (c == 'S')
 	{
@@ -36,7 +36,7 @@ void		find_pos_two(t_main *m, char c)
 	}
 }
 
-void		find_pos(t_main *m, char c, int i, int j)
+void	find_pos(t_main *m, char c, int i, int j)
 {
 	if ((c == 'N' || c == 'S' || c == 'E' || c == 'W') && m->map.user == 0)
 	{
@@ -59,13 +59,15 @@ void		find_pos(t_main *m, char c, int i, int j)
 	find_pos_two(m, c);
 }
 
-void		put_sprite(t_main *m)
+void	put_sprite(t_main *m)
 {
 	int	i;
 	int	j;
 	int	k;
 
 	if (!(m->sp = (t_sprite *)malloc((m->map.spr + 1) * sizeof(t_sprite))))
+		error_write(14);
+	if (!(m->sp2 = (t_sprite2 *)malloc((m->map.spr2 + 1) * sizeof(t_sprite))))
 		error_write(14);
 	i = -1;
 	k = -1;
@@ -80,6 +82,10 @@ void		put_sprite(t_main *m)
 				m->sp[k].x = (double)i + 0.5;
 				m->sp[k].y = (double)j + 0.5;
 			}
+			else if (m->map.map[i][j] == '3')
+				++k;
+				m->sp2[k].x = (double)i + 0.5;
+				m->sp2[k].y = (double)j + 0.5;
 		}
 	}
 }

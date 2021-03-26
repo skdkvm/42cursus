@@ -5,21 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 17:56:13 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/24 21:28:59 by seonggki         ###   ########.fr       */
+/*   Created: 2021/03/26 14:37:39 by seonggki          #+#    #+#             */
+/*   Updated: 2021/03/26 16:27:45 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-char		*put_map_value(char *line, int len, int y)
+char	*put_map_value(char *line, int len, int y)
 {
 	int		i;
 	char	*value;
 
-	i = 0;
 	if (!(value = (char *)malloc((y + 1) * sizeof(char))))
 		error_write(14);
+	i = -1;
 	while (++i < y)
 		value[i] = 'n';
 	i = -1;
@@ -32,9 +32,9 @@ char		*put_map_value(char *line, int len, int y)
 	return (value);
 }
 
-void		copy_map(char **dest, char **array, int x, t_main *m)
+void	copy_map(char **dest, char **array, int x, t_main *m)
 {
-	int		i;
+	int i;
 
 	i = -1;
 	while (++i < x)
@@ -42,19 +42,19 @@ void		copy_map(char **dest, char **array, int x, t_main *m)
 	dest[x] = 0;
 }
 
-void		check_map_value(char *line)
+void	check_map_value(char *line)
 {
 	while (*line)
 	{
-		if (!((*line >= '0' && *line <= '2') ||
-				*line == 'N' || *line == 'S' || *line == 'W' || *line == 'E' ||
-					ft_isspace(*line) || *line == 0))
+		if (!((*line >= '0' && *line <= '2') || *line == 'N' ||
+				*line == 'S' || *line == 'W' || *line == 'E' ||
+			ft_isspace(*line) || *line == 0) || *line <= '3')
 			error_write(11);
 		line++;
 	}
 }
 
-void		put_map(t_main *m, char *line, int *x, int *y)
+void	put_map(t_main *m, char *line, int *x, int *y)
 {
 	check_map_value(line);
 	m->len = ft_strlen(line);

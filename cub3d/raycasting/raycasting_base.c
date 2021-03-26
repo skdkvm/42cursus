@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 17:20:07 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/24 21:37:01 by seonggki         ###   ########.fr       */
+/*   Created: 2021/03/26 14:16:10 by seonggki          #+#    #+#             */
+/*   Updated: 2021/03/26 14:16:10 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void			raycasting_set(t_main *m)
+void	raycasting_set(t_main *m)
 {
 	m->v.camera_x = 2 * m->v.i / (double)m->w - 1;
 	m->v.ray_x = m->dir.x + m->plane.x * m->v.camera_x;
@@ -24,7 +24,7 @@ void			raycasting_set(t_main *m)
 	m->v.hit = 0;
 }
 
-void			raycasting_side_xy(t_main *m)
+void	raycasting_side_xy(t_main *m)
 {
 	if (m->v.ray_x < 0)
 	{
@@ -48,7 +48,7 @@ void			raycasting_side_xy(t_main *m)
 	}
 }
 
-void			raycasting_map_xy(t_main *m)
+void	raycasting_map_xy(t_main *m)
 {
 	while (m->v.hit == 0)
 	{
@@ -68,9 +68,9 @@ void			raycasting_map_xy(t_main *m)
 			m->v.hit = 1;
 	}
 	if (m->v.side == 0)
-		m->v.wall_dist = (m->v.map_x - m->pos.x +
-			(1 - m->v.step_x) / 2) / m->v.ray_x;
+		m->v.wall_dist =
+			(m->v.map_x - m->pos.x + (1 - m->v.step_x) / 2) / m->v.ray_x;
 	else
-		m->v.wall_dist = (m->v.map_y - m->pos.y +
-			(1 - m->v.step_y) / 2) / m->v.ray_y;
+		m->v.wall_dist =
+			(m->v.map_y - m->pos.y + (1 - m->v.step_y) / 2) / m->v.ray_y;
 }

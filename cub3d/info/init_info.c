@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 17:44:34 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/24 17:44:34 by seonggki         ###   ########.fr       */
+/*   Created: 2021/03/26 14:36:36 by seonggki          #+#    #+#             */
+/*   Updated: 2021/03/26 16:31:10 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void		init_info_tex(t_main *m)
+void	init_info_tex(t_main *m)
 {
 	m->tex[0].img = NULL;
 	m->tex[1].img = NULL;
@@ -21,7 +21,7 @@ void		init_info_tex(t_main *m)
 	m->tex[4].img = NULL;
 }
 
-void		init_info_map(t_main *m)
+void	init_info_map(t_main *m)
 {
 	m->map.map = NULL;
 	m->map.tem = NULL;
@@ -30,9 +30,10 @@ void		init_info_map(t_main *m)
 	m->map.checkend = 0;
 	m->map.user = 0;
 	m->map.spr = 0;
+	m->map.spr2 = 0;
 }
 
-void		init_info_cub(t_main *m)
+void	init_info_cub(t_main *m)
 {
 	m->cub.i = 0;
 	m->cub.r = 0;
@@ -41,13 +42,14 @@ void		init_info_cub(t_main *m)
 	m->cub.e = 0;
 	m->cub.w = 0;
 	m->cub.sp = 0;
+	m->cub.sp2 = 0;
 	m->cub.f = 0;
 	m->cub.c = 0;
 	m->cub.map = 0;
 	m->cub.all = 0;
 }
 
-void		init_info(t_main *m)
+void	init_info(t_main *m)
 {
 	m->w = 0;
 	m->h = 0;

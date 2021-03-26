@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 17:44:44 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/24 21:30:26 by seonggki         ###   ########.fr       */
+/*   Created: 2021/03/26 14:21:56 by seonggki          #+#    #+#             */
+/*   Updated: 2021/03/26 16:31:00 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	check_map_wall(t_main *m, int i, int j)
 	if (i == 0 || j == 0 || i == m->map.x - 1 || j == m->map.y - 1)
 	{
 		if (!(m->map.map[i][j] == '1' || (i == 0 && m->map.map[i][j] == 'n') ||
-			(j == 0 && m->map.map[i][j] == 'n') || (i == m->map.x - 1 &&
-			m->map.map[i][j] == 'n') ||
-				(j == m->map.y - 1 && m->map.map[i][j] == 'n')))
+		(j == 0 && m->map.map[i][j] == 'n') ||
+		(i == m->map.x - 1 && m->map.map[i][j] == 'n') ||
+		(j == m->map.y - 1 && m->map.map[i][j] == 'n')))
 		{
 			free_array(m->map.map);
 			error_write(7);
@@ -44,10 +44,10 @@ void	check_map_wall(t_main *m, int i, int j)
 	else
 	{
 		if ((m->map.map[i][j] == '0' || m->map.map[i][j] == '2' ||
-			m->map.map[i][j] == 'N' || m->map.map[i][j] == 'E' ||
-				m->map.map[i][j] == 'S' || m->map.map[i][j] == 'W') &&
-					(m->map.map[i - 1][j] == 'n' ||
-					m->map.map[i + 1][j] == 'n' || m->map.map[i][j + 1] == 'n'))
+		m->map.map[i][j] == 'N' || m->map.map[i][j] == 'E' ||
+		m->map.map[i][j] == 'S' || m->map.map[i][j] == 'W') &&
+		(m->map.map[i - 1][j] == 'n' || m->map.map[i + 1][j] == 'n' ||
+		m->map.map[i][j + 1] == 'n' || m->map.map[i][j] == '3'))
 		{
 			free_array(m->map.map);
 			error_write(7);
@@ -57,8 +57,8 @@ void	check_map_wall(t_main *m, int i, int j)
 
 void	check_map(t_main *m)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	if (m->map.x < 3 || m->map.y < 3)
 	{
@@ -75,6 +75,8 @@ void	check_map(t_main *m)
 			find_pos(m, m->map.map[i][j], i, j);
 			if (m->map.map[i][j] == '2')
 				++m->map.spr;
+			if (m->map.map[i][j] == '3')
+				++m->map.spr2;
 		}
 	}
 	check_map_user(m);

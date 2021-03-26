@@ -6,13 +6,13 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 18:09:52 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/24 21:24:45 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/26 15:16:56 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	keypress_up_down(int keycode, t_main *m)
+void	key_up_down(int keycode, t_main *m)
 {
 	if (keycode == KEY_ESC)
 	{
@@ -40,7 +40,7 @@ void	keypress_up_down(int keycode, t_main *m)
 	}
 }
 
-void	keypress_left_right(int keycode, t_main *m)
+void	key_left_right(int keycode, t_main *m)
 {
 	if (keycode == KEY_A)
 	{
@@ -62,7 +62,7 @@ void	keypress_left_right(int keycode, t_main *m)
 	}
 }
 
-void	keypress_rotate(int keycode, t_main *m)
+void	key_rotate(int keycode, t_main *m)
 {
 	double tem_dir_x;
 	double tem_plane_x;
