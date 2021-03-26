@@ -26,8 +26,10 @@ int main_loop(t_main *m)
 	{
 		ft_raycasting_set_info(m);		//DDAgorithm 초기화
 		ft_raycasting_get_side_xy(m);	//DDAgorithm을 시작하기 전에 stepX, Y 그리고 sideDistX, Y에 값을 넣어주는 부분이다.
+		ft_raycasting_get_map_xy(m);
 		ft_raycasting_put_texture_1(m); //이제 계산한 거리를 가지고 화면에 그려야 하는 선의 높이를 구할 수 있다.
-		ft_raycasting_put_texture_2(m); //여기서 step을 사용한 방식은 아핀 텍스처매핑 방법입니다. 각 픽셀에 대해 각각 나눗셈을 하지않고 두 점 사이를 선형보간하는 방식입니다.이 방법은 일반적으로 원근법을 정확하게 표현해주지 못하지만 지금처럼 완벽하게 수직인 벽(그리고 완벽하게 수평인 천장과 바닥) 인 경우에는 올바르게 나타납니다.ft_raycasting_put_texture_3(m, z_buffer);
+		ft_raycasting_put_texture_2(m); //여기서 step을 사용한 방식은 아핀 텍스처매핑 방법입니다. 각 픽셀에 대해 각각 나눗셈을 하지않고 두 점 사이를 선형보간하는 방식입니다.이 방법은 일반적으로 원근법을 정확하게 표현해주지 못하지만 지금처럼 완벽하게 수직인 벽(그리고 완벽하게 수평인 천장과 바닥) 인 경우에는 올바르게 나타납니다.
+		ft_raycasting_put_texture_3(m, z_buffer);
 	}
 	m->v.i = -1;
 	while (++m->v.i < m->map.spr)
