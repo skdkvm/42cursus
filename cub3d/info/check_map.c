@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 14:21:56 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/26 16:31:00 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:13:30 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	check_map_wall(t_main *m, int i, int j)
 		m->map.map[i][j] == 'N' || m->map.map[i][j] == 'E' ||
 		m->map.map[i][j] == 'S' || m->map.map[i][j] == 'W') &&
 		(m->map.map[i - 1][j] == 'n' || m->map.map[i + 1][j] == 'n' ||
-		m->map.map[i][j + 1] == 'n' || m->map.map[i][j] == '3'))
+		m->map.map[i][j + 1] == 'n'))
 		{
 			free_array(m->map.map);
 			error_write(7);
@@ -75,8 +75,6 @@ void	check_map(t_main *m)
 			find_pos(m, m->map.map[i][j], i, j);
 			if (m->map.map[i][j] == '2')
 				++m->map.spr;
-			if (m->map.map[i][j] == '3')
-				++m->map.spr2;
 		}
 	}
 	check_map_user(m);

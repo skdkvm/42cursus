@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 21:13:37 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/26 16:36:05 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:11:31 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,6 @@ int			main_loop(t_main *m)
 	while (++m->v.i < m->map.spr)
 	{
 		sprite_set_info(m, sprite_sort);
-		sprite_set_info_2(m, sprite_sort);
-		sprite_get_draw_info(m);
-		sprite_put_info(m, z_buffer);
-	}
-	while (++m->v.i < m->map.spr2)
-		sprite_distance(m, sprite_sort);
-	sort_sprites(m, sprite_sort);
-	while (++m->v.i < m->map.spr2)
-	{
-		sprite_set_info_2(m, sprite_sort);
 		sprite_get_draw_info(m);
 		sprite_put_info(m, z_buffer);
 	}

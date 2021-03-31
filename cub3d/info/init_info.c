@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 14:36:36 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/26 16:31:10 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:13:04 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	init_info_map(t_main *m)
 	m->map.checkend = 0;
 	m->map.user = 0;
 	m->map.spr = 0;
-	m->map.spr2 = 0;
 }
 
 void	init_info_cub(t_main *m)
@@ -42,7 +41,6 @@ void	init_info_cub(t_main *m)
 	m->cub.e = 0;
 	m->cub.w = 0;
 	m->cub.sp = 0;
-	m->cub.sp2 = 0;
 	m->cub.f = 0;
 	m->cub.c = 0;
 	m->cub.map = 0;

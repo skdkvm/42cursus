@@ -6,11 +6,12 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 14:37:34 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/26 14:41:52 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:16:03 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stdio.h>
 
 void	put_map_size(t_main *m, char *line)
 {

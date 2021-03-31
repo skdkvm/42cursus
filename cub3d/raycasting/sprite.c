@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 14:18:03 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/26 16:22:33 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:11:59 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,6 @@ void	sprite_set_info(t_main *m, t_sort *sprite_sort)
 {
 	m->v.num = sprite_sort[m->v.i].order;
 	m->v.texture = m->tex[4];
-	m->v.sprite_x = m->sp[m->v.num].x - m->pos.x;
-	m->v.sprite_y = m->sp[m->v.num].y - m->pos.y;
-	m->v.invdet =
-		1.0 / (m->plane.x * m->dir.y - m->dir.x * m->plane.y);
-	m->v.transform_x = m->v.invdet *
-					(m->dir.y * m->v.sprite_x - m->dir.x * m->v.sprite_y);
-	m->v.transform_y = m->v.invdet *
-					(-m->plane.y * m->v.sprite_x + m->plane.x * m->v.sprite_y);
-	m->v.sprite_screen_x =
-		(int)((m->w / 2) * (1 + m->v.transform_x / m->v.transform_y));
-	m->v.v_movescreen = (int)(V_MOVE / m->v.transform_y);
-	m->v.sprite_h = abs((int)(m->h / (m->v.transform_y))) / V_DIV;
-}
-
-void	sprite_set_info_2(t_main *m, t_sort *sprite_sort)
-{
-	m->v.num = sprite_sort[m->v.i].order;
-	m->v.texture = m->tex[5];
 	m->v.sprite_x = m->sp[m->v.num].x - m->pos.x;
 	m->v.sprite_y = m->sp[m->v.num].y - m->pos.y;
 	m->v.invdet =

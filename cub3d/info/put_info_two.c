@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 14:37:29 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/26 16:34:09 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:12:08 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ void	put_sprite(t_main *m)
 
 	if (!(m->sp = (t_sprite *)malloc((m->map.spr + 1) * sizeof(t_sprite))))
 		error_write(14);
-	if (!(m->sp2 = (t_sprite2 *)malloc((m->map.spr2 + 1) * sizeof(t_sprite))))
-		error_write(14);
 	i = -1;
 	k = -1;
 	while (++i < m->map.x)
@@ -82,10 +80,6 @@ void	put_sprite(t_main *m)
 				m->sp[k].x = (double)i + 0.5;
 				m->sp[k].y = (double)j + 0.5;
 			}
-			else if (m->map.map[i][j] == '3')
-				++k;
-				m->sp2[k].x = (double)i + 0.5;
-				m->sp2[k].y = (double)j + 0.5;
 		}
 	}
 }

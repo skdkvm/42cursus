@@ -6,11 +6,12 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 14:37:39 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/26 16:27:45 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:27:55 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+#include <stdio.h>
 
 char	*put_map_value(char *line, int len, int y)
 {
@@ -46,9 +47,9 @@ void	check_map_value(char *line)
 {
 	while (*line)
 	{
-		if (!((*line >= '0' && *line <= '2') || *line == 'N' ||
+		if (!((*line >= '0' || *line <= '2' || *line == 'N' ||
 				*line == 'S' || *line == 'W' || *line == 'E' ||
-			ft_isspace(*line) || *line == 0) || *line <= '3')
+			ft_isspace(*line) || *line == 0)))
 			error_write(11);
 		line++;
 	}

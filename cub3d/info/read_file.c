@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 14:37:44 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/26 16:29:57 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:18:45 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,7 @@ void	save_info(t_main *m, char *line, int i)
 		put_texture(m, line, 2, &m->cub.w);
 	if (line[i] == 'E' && line[i + 1] == 'A' && ft_isspace(line[i + 2]))
 		put_texture(m, line, 3, &m->cub.e);
-	if (line[i] == 'S' && line[i + 1] == 'P')
-		put_texture(m, line, 4, &m->cub.sp);
-	if (line[i] == 'S' && line[i + 1] == 'P' && line[i + 2] == 'P')
+	if (line[i] == 'S' && ft_isspace(line[i + 1]))
 		put_texture(m, line, 4, &m->cub.sp);
 	if (line[i] == 'F' && ft_isspace(line[i + 1]))
 		put_background(m, line, 'F', &m->cub.f);
