@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 13:31:46 by seonggki          #+#    #+#             */
-/*   Updated: 2021/03/26 16:15:43 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/04/09 12:47:09 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	raycasting_texture_1(t_main *m)
 		m->v.wallx = m->pos.x + m->v.wall_dist * m->v.ray_x;
 	m->v.wallx -= floor((m->v.wallx));
 	if (m->v.side == 0 && m->v.ray_x < 0)
-		m->v.texture = m->tex[0];
+		m->v.texture = m->tex[0];//북
 	if (m->v.side == 0 && m->v.ray_x > 0)
-		m->v.texture = m->tex[1];
+		m->v.texture = m->tex[1];//남
 	if (m->v.side == 1 && m->v.ray_y < 0)
-		m->v.texture = m->tex[2];
+		m->v.texture = m->tex[2];//서
 	if (m->v.side == 1 && m->v.ray_y > 0)
-		m->v.texture = m->tex[3];
+		m->v.texture = m->tex[3];//동
 }
 
 void	raycasting_texture_2(t_main *m)
