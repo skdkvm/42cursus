@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sb.c                                               :+:      :+:    :+:   */
+/*   pb.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 21:00:11 by seonggki          #+#    #+#             */
-/*   Updated: 2021/04/26 21:02:35 by seonggki         ###   ########.fr       */
+/*   Created: 2021/04/26 21:10:32 by seonggki          #+#    #+#             */
+/*   Updated: 2021/04/26 21:27:09 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_list **a)
+void	pb(t_list **a, t_list **b)
 {
-	t_list *ptr;
+	t_list	*a_ptr;
+	t_list	*b_ptr;
 
-	if (a == NULL || ft_lstsize((*a)) <= 1)
+	if (a == NULL || b == NULL || (*a) == NULL)
+	{
 		return ;
-	ptr = (*a);
-	swap(ptr, ptr->next);
+	}
+	a_ptr = (*a);
+	b_ptr = (*b);
+	ft_lstadd_front(b, ft_lstnew(a_ptr->n));
+	ft_lstdel_front(a);
 }

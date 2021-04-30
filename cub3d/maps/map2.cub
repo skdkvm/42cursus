@@ -1,0 +1,18 @@
+R 800 600
+NO ./textures/blue.xpm
+SO ./textures/brick.xpm
+WE ./textures/grey.xpm
+EA ./textures/wood.xpm
+S ./textures/barrel.xpm
+
+F 102,51,0
+C 64,64,64
+
+11111111111
+10020002001
+10000000001
+
+10020002001
+10000000001
+10000N00001
+11111111111

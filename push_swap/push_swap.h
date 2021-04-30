@@ -29,8 +29,11 @@ void		rra(t_list **a);
 void		rrb(t_list **b);
 void		rrr(t_list **a, t_list **b);
 void		sa(t_list **a);
-void		sa(t_list **a);
+void		sb(t_list **b);
 void		ss(t_list **a, t_list **b);
 int			check_argv(int start, int len, char **argv);
-
+int			call_command(t_list **a_start, t_list **b_start);
+int			check_descending(t_list *a, t_list *b);
+void		print_stack(t_list *stack);
+void		print_process(char *command, t_list *a, t_list *b);
 #endif
