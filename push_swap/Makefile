@@ -1,48 +1,75 @@
-NAME_CH =	checker
-LIB =		Libft
-GNL =		get_next_line
-CHECK_DIR =	src
+NAME_CH	:=	checker
 
-CHECK_SRC =	./$(CHECK_DIR)/checker.c ./$(CHECK_DIR)/sa.c ./$(CHECK_DIR)/sb.c ./$(CHECK_DIR)/ss.c ./$(CHECK_DIR)/pa.c ./$(CHECK_DIR)/pb.c ./$(CHECK_DIR)/ra.c ./$(CHECK_DIR)/rb.c ./$(CHECK_DIR)/rr.c ./$(CHECK_DIR)/rra.c ./$(CHECK_DIR)/rrb.c ./$(CHECK_DIR)/rrr.c \
-			./$(CHECK_DIR)/print_stack.c ./$(CHECK_DIR)/call_command.c ./$(CHECK_DIR)/check_descending.c ./$(CHECK_DIR)/check_argv.c
+D_SRC	:=	src/
+D_CH	:=	$(D_SRC)checker/
+D_OBJ	:=	obj/
+D_INC	:=	include/
+D_LIBFT	:=	lib/libft
 
-INC_DIR = ./
-OBJ_CH = $(CHECK_SRC:.c=.o)
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -I.
-OPTIONS = -I$(INC_DIR) -I./Libft -I./get_next_line -lft -L./Libft -lget_next_line -L./get_next_line
+LIBFT	:=	$(addprefix $(D_LIBFT), libft.a)
 
-all : $(LIB) $(GNL) $(NAME_CH)
+SRC		:=	$(addsuffix .c, \
+			parse \
+			stack \
+			stack_element \
+			instruction \
+			)
+CH_SRC	:=	$(addsuffix .c, \
+			checker \
+			operations \
+			)
 
-$(LIB) : relib cleanlib
+SRCS	:=	$(addprefix $(D_SRC), $(SRC))
+CH_SRCS	:=	$(addprefix $(D_CH), $(CH_SRC))
 
-$(GNL) : regnl cleangnl
+OBJS	:=	$(addprefix $(D_OBJ), $(SRC:.c=.o))
+CH_OBJS	:=	$(addprefix $(D_OBJ), $(CH_SRC:.c=.o))
 
-$(NAME_CH):  $(LIB) $(GNL) $(OBJ_CH)
-					${CC} ${CFLAGS} -o ${NAME_CH} ${OPTIONS} ${OBJ_CH}
+CC		:=	gcc
+CFLAGS	:=	-Wall -Wextra -Werror
+SANITIZE:=	-fsanitize=address -g
 
-clean:    cleanlib cleangnl
-					rm -rf $(OBJ_CH)
+INC		:=	-I$(D_INC)
+INC		+=	-I$(D_LIBFT)
 
-fclean:   clean fcleanlib fcleangnl
-					rm -rf $(NAME_CH)
+LIB		:=	-L$(D_LIBFT)
+LIB		+=	-lft
 
-re: fclean all
+RM		:=	rm -f
 
-relib:
-	@$(MAKE) -C ./Libft re
+GREEN	:=	\033[32m
+YELLOW	:=	\033[33m
+RESET	:=	\033[0m
 
-cleanlib:
-	@$(MAKE) -C ./Libft clean
+all		:	$(D_OBJ) $(LIBFT) $(NAME_CH)
 
-fcleanlib: cleanlib
-	@$(MAKE) -C ./Libft fclean
+$(NAME_CH):	$(OBJS) $(CH_OBJS)
+			@echo "$(YELLOW)Build $(RESET)$@"
+			@$(CC) $(CFLAGS) $(INC) $(LIB) -o $@ $^
 
-regnl:
-	@$(MAKE) -C ./get_next_line re
+$(D_OBJ)%.o:	$(D_SRC)%.c
+			@echo "$(GREEN)compiling :$(RESET)"
+			@$(CC) $(CFLAGS) $(INC) $(LIB) -o $@ $^
 
-cleangnl:
-	@$(MAKE) -C ./get_next_line clean
+$(D_OBJ)%.o:	$(D_CH)%.c
+			@echo "$(GREEN)compiling :$(RESET)"
+			@$(CC) $(CFLAGS) $(INC) $(LIB) -o $@ $^
 
-fcleangnl: cleangnl
-	@$(MAKE) -C ./get_next_line fclean
+$(D_OBJ):
+			@mkdir $(D_OBJ)
+
+$(LIBFT):
+			@$(MAKE) -sC $(D_LIBFT) all
+
+clean:
+			@echo "$(YELLOW)-   Deleting all object from $(NAME_CH)/...$(RESET)"
+			@$(RM) -r $(D_OBJ)
+			@$(MAKE) -sC $(D_LIBFT) clean
+
+fclean:		clean
+			@echo "$(YELLOW)-   Deleting all excutable from $(NAME_CH)/...$(RESET)"
+			@$(RM) $(NAME_CH)
+
+re:			fclean all
+
+.PHONY:		all clean fclean re bonus test
