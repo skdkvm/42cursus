@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+// /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   put_cub.c                                          :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 14:37:34 by seonggki          #+#    #+#             */
-/*   Updated: 2021/04/09 12:38:32 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/05/13 16:33:51 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	put_map_size(t_main *m, char *line)
 	char	**array;
 
 	array = ft_split_line(line);
-	//printf("array = %s\n", line); line = R 800 600 정보가 들어가 있음
-	//printf("array[1] = %s\n", array[0]); array[0] = R
-	//printf("array[1] = %s\n", array[1]); array[1] = 800
-	//printf("array[2] = %s\n", array[2]); array[2] = 600
-	//printf("array[3] = %s\n", array[3]); array[3] = (null)
+	printf("array = %s\n", line); //line = R 800 600 정보가 들어가 있음
+	printf("array[1] = %s\n", array[0]);// array[0] = R;
+	printf("array[1] = %s\n", array[1]);// array[1] = 800;
+	printf("array[2] = %s\n", array[2]);// array[2] = 600;
+	printf("array[3] = %s\n", array[3]);// array[3] = (null);
 	if (!(array[1] != 0 && array[2] != 0) || m->cub.r != 0 || array[3] != 0)
 	{
 		free_array(array);
@@ -46,10 +46,10 @@ void	put_background(t_main *m, char *line, int c, int *cub)
 
 	i = 0;
 	array = ft_split_line(line);
-	//printf("array = %s\n", line); line = F 102,51,0 / C 64,64,64
-	//printf("array[1] = %s\n", array[1]); F : R = 102 / C : R = 64
-	//printf("array[2] = %s\n", array[2]); F : G = 51 / C : G = 64
-	//printf("array[3] = %s\n", array[3]); F : B = 51 / C : B = 64
+	printf("array = %s\n", line);// line = F 102,51,0 / C 64,64,64
+	printf("array[1] = %s\n", array[1]);// F : R = 102 / C : R = 64
+	printf("array[2] = %s\n", array[2]);// F : G = 51 / C : G = 64
+	printf("array[3] = %s\n", array[3]);// F : B = 51 / C : B = 64
 	while (++i < 4)
 	{
 		if (array[i] == NULL || *cub != 0 ||
@@ -76,7 +76,7 @@ void	put_texture(t_main *m, char *line, int i, int *cub)
 	int		fd;
 
 	array = ft_split_line(line);
-	//printf("array = %s\n", line); texture 정보
+	printf("array = %s\n", line);// texture 정보
 	fd = open(array[1], O_RDONLY);
 	if (fd == -1 || (*cub) != 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 14:37:39 by seonggki          #+#    #+#             */
-/*   Updated: 2021/04/09 12:15:47 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/05/13 16:38:30 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*put_map_value(char *line, int len, int y)
 {
 	int		i;
 	char	*value;
-	//printf("line = %s\n", line); //line 맵 정보가 들어가있음
+	printf("line = %s\n", line); //line 맵 정보가 들어가있음
 	if (!(value = (char *)malloc((y + 1) * sizeof(char))))
 		error_write(14);
 	i = -1;
@@ -43,7 +43,7 @@ void	copy_map(char **dest, char **array, int x, t_main *m)
 	while (++i < x)
 	{
 		dest[i] = put_map_value(array[i], m->y, m->map.y);
-		//printf("dest = %s\n", dest[i]); 맵을 한줄씩 복제
+		printf("dest = %s\n", dest[i]); //맵을 한줄씩 복제
 	}
 	dest[x] = 0;
 }
@@ -63,12 +63,12 @@ void	check_map_value(char *line)
 void	put_map(t_main *m, char *line, int *x, int *y)
 {
 	check_map_value(line);
-	//printf("check_map_value = %s\n", line);//맵의 정보가 들어가있다
+	printf("check_map_value = %s\n", line);//맵의 정보가 들어가있다
 	m->len = ft_strlen(line);
 	m->x = *x;
-	//printf("x = %d\n", *x); //맵의 행의 개수
+	printf("x = %d\n", *x); //맵의 행의 개수
 	m->y = *y;
-	//printf("y = %d\n", *y); //맵의 열의 개수
+	printf("y = %d\n", *y); //맵의 열의 개수
 	if (*y < m->len)
 		*y = m->len;
 	++(*x);
@@ -88,6 +88,6 @@ void	put_map(t_main *m, char *line, int *x, int *y)
 		free_array(m->map.tem);
 	}
 	m->map.map[*x - 1] = put_map_value(line, m->len, *y);
-	//printf("put_map_value = %s\n", m->map.map[*x - 1]); //맵의 정보가 모두 copy가 잘됨
+	printf("put_map_value = %s\n", m->map.map[*x - 1]); //맵의 정보가 모두 copy가 잘됨
 	m->map.map[*x] = 0;
 }
