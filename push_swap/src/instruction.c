@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:14:52 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/19 18:43:00 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:27:46 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ void	both(void (*f)(), t_stack *a, t_stack *b)
 	f(b);
 }
 
-void	push(t_stack *a, t_stack *b)
+void	push(t_stack *from, t_stack *to)
 {
 	int	top;
 
-	if (a->len == 0)
+	if (from->len == 0)
 		return ;
-	top = a->a[0];
-	pop_front(a);
-	push_front(b, top);
+	top = from->a[0];
+	pop_front(from);
+	push_front(to, top);
 }
 
 void	swap(t_stack *s)

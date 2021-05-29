@@ -6,11 +6,34 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 15:40:51 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 17:32:53 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/05/29 18:41:04 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void		solve_three(t_stack *a)
+{
+	t_stack *tmp;
+
+	tmp = dup_stack(a);
+	rotate(tmp);
+	if (is_sorted(tmp))
+		print_rotate(a, "ra");
+	else
+	{
+		rotate(tmp);
+		if (is_sorted(tmp))
+			print_revers_rotate(a, "rra");
+		else
+		{
+			print_swap(a, "sa");
+			if (!is_sorted(a))
+				solve_three(a);
+		}
+	}
+	free_stack(tmp);
+}
 
 void		solve_five(t_stack *a, t_stack *b)
 {
@@ -37,28 +60,6 @@ void		solve_five(t_stack *a, t_stack *b)
 	free_stack(tmp);
 }
 
-void		solve_three(t_stack *a)
-{
-	t_stack *tmp;
-
-	tmp = dup_stack(a);
-	rotate(tmp);
-	if (is_sorted(tmp))
-		print_rotate(a, "ra");
-	else
-	{
-		rotate(tmp);
-		if (is_sorted(tmp))
-			print_revers_rotate(a, "rra");
-		else
-		{
-			print_swap(a, "sa");
-			if (!is_sorted(a))
-				solve_three(a);
-		}
-	}
-	free_stack(tmp);
-}
 
 void		solve(t_stack *a, t_stack *b, t_stack *pivot)
 {
@@ -68,12 +69,13 @@ void		solve(t_stack *a, t_stack *b, t_stack *pivot)
 		return ;
 	split_chunk(pivot, a);
 	chunk_len = get_chunk_len(pivot, a);
+	push_chunk_to_b(a, b, pivot, chunk_len);
 	if (b->len <= LIMIT_LEN)
 		empty_b(a, b);
 	else
 	{
 		recursive_split_b(a, b, pivot);
-		quick_sort(pivot, 0, pivot->len -1);
+		quick_sort(pivot, 0, pivot->len - 1);
 	}
 	pop_front(pivot);
 	solve(a, b, pivot);
@@ -88,6 +90,8 @@ void		push_swap(t_stack *a, t_stack *b)
 		return ;
 	if (a->len <= 3)
 		solve_three(a);
+	else if (a->len <= 5)
+		solve_five(a, b);
 	else
 	{
 		pivot = create_stack(INIT_LEN);
@@ -110,7 +114,7 @@ int			main(int argc, char **argv)
 		if (parse(a, argc, argv) == 0)
 			push_swap(a, b);
 		else
-			write(2, "Error\n", 6);
+			write(STDERR, "Error\n", 6);
 		free_stack(a);
 		free_stack(b);
 	}

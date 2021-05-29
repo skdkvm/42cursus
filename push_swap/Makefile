@@ -23,6 +23,7 @@ CH_SRC	:=	$(addsuffix .c, \
 			)
 PS_SRC	:=	$(addsuffix .c, \
 			push_swap \
+			push_chunk_to_b \
 			stack_a \
 			stack_b \
 			print_swap \
