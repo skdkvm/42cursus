@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/28 13:43:24 by seushin           #+#    #+#             */
-/*   Updated: 2021/01/11 19:31:32 by seushin          ###   ########.fr       */
+/*   Created: 2021/05/29 15:00:24 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 15:00:24 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

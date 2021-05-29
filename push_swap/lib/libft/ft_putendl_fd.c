@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/23 15:42:57 by seushin           #+#    #+#             */
-/*   Updated: 2020/12/23 15:49:05 by seushin          ###   ########.fr       */
+/*   Created: 2021/05/29 14:58:52 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:58:53 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

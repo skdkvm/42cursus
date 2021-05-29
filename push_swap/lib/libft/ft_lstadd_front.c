@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/24 18:04:52 by seushin           #+#    #+#             */
-/*   Updated: 2020/12/24 19:36:41 by seushin          ###   ########.fr       */
+/*   Created: 2021/05/29 14:57:49 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:57:50 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

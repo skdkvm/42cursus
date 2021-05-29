@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ultoa_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/11 16:39:47 by seushin           #+#    #+#             */
-/*   Updated: 2021/01/11 16:40:09 by seushin          ###   ########.fr       */
+/*   Created: 2021/05/29 15:00:11 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 15:00:12 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

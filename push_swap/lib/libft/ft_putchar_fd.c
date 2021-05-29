@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/23 15:39:22 by seushin           #+#    #+#             */
-/*   Updated: 2020/12/23 15:40:01 by seushin          ###   ########.fr       */
+/*   Created: 2021/05/29 14:58:49 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:58:50 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

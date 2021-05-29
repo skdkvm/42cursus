@@ -6,13 +6,14 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 22:10:27 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/19 14:59:50 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/05/29 17:21:05 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <errno.h>
 #include "./srcs/libasm.h"
 
 void	ft_strlen_test(void)
@@ -85,33 +86,50 @@ void	ft_strcmp_test(void)
 
 void	ft_write_test(void)
 {
-	char *str = "Hello, world!";
-	int fd1 = open("sample1.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	int fd2 = open("sample2.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	int fd3 = open("wrong.txt", O_WRONLY, 0644);
-	int fd4;
+	// char *str = "Hello, world!";
+	// int fd1 = open("sample1.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	// int fd2 = open("sample2.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	// int fd3 = open("wrong.txt", O_WRONLY, 0644);
+	// int fd4;
 
-	printf("===== TEST FT_WRITE =====\n");
-	printf("WRITE: %zd\n", write(1, str, 13));
-	printf("FT_WRITE: %zd\n", ft_write(1, str, 13));
-	printf("WRITE: %zd\n", write(1, "", 0));
-	printf("FT_WRITE: %zd\n", ft_write(1, "", 0));
-	printf("WRITE: %zd\n", write(-7, NULL, 0));
-	printf("FT_WRITE: %zd\n", ft_write(-7, NULL, 0));
+	// printf("===== TEST FT_WRITE =====\n");
+	// printf("WRITE: %zd\n", write(1, str, 13));
+	// printf("FT_WRITE: %zd\n", ft_write(1, str, 13));
+	// printf("WRITE: %zd\n", write(1, "", 0));
+	// printf("FT_WRITE: %zd\n", ft_write(1, "", 0));
+	// printf("WRITE: %zd\n", write(-7, NULL, 0));
+	// printf("FT_WRITE: %zd\n", ft_write(-7, NULL, 0));
 
-	// write in files
-	write(fd1, str, 13);
-	ft_write(fd2, str, 13);
+	// // write in files
+	// write(fd1, str, 13);
+	// ft_write(fd2, str, 13);
 
-	// write in wrong file
-	// write(fd3, str, 13);
-	// ft_write(fd3, str, 13);
-	// write(fd4, str, 13);
-	// ft_write(fd4, str, 13);
+	// // write in wrong file
+	// // write(fd3, str, 13);
+	// // ft_write(fd3, str, 13);
+	// // write(fd4, str, 13);
+	// // ft_write(fd4, str, 13);
 
-	close(fd1);
-	close(fd2);
+	// close(fd1);
+	// close(fd2);
+	// printf("\n");
+
+	char *c = "bonjour";
+	int	len = strlen(c);
+
+	printf("write   :%zd    errno:%d\n", write(1, c, 5), errno);
+	errno = 0;
+	printf("ft_write:%zd    errno:%d\n", ft_write(1, c, 5), errno);
+	errno = 0;
 	printf("\n");
+	printf("write   :%zd    errno:%d\n", write(-1, c, len), errno);
+	errno = 0;
+	printf("ft_write:%zd    errno:%d\n", ft_write(-1, c, len), errno);
+	errno = 0;
+	printf("\n");
+	printf("write   :%zd    errno:%d\n", write(2, c, len), errno);
+	errno = 0;
+	printf("ft_write:%zd    errno:%d\n", ft_write(2, c, len), errno);
 }
 
 void	ft_read_test(void)

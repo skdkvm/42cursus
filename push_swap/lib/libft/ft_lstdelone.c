@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seushin <seushin@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/24 18:17:48 by seushin           #+#    #+#             */
-/*   Updated: 2021/02/15 20:39:55 by seushin          ###   ########.fr       */
+/*   Created: 2021/05/29 14:58:00 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:58:02 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

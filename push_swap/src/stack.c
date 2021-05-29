@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 15:49:03 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/19 18:45:04 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/05/29 15:58:21 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ static int 	divide_pivot(t_stack *s, int start, int end)
 		}
 		j++;
 	}
+	tmp = s->a[i];
+	s->a[i] = s->a[pivot];
+	s->a[pivot] = tmp;
+	return (i);
 }
 
 void		quick_sort(t_stack *s, int start, int end)

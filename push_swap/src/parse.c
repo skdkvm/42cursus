@@ -6,13 +6,13 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:04:20 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/19 19:10:30 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/05/29 14:42:08 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	integer(char *arg)
+static int	is_integer(char *arg)
 {
 	long long int	res;
 	int				i;
@@ -63,7 +63,7 @@ static int	check_arg(char *arg, t_stack *s, int n)
 		i++;
 	if (arg[i] != '\0')
 		return (1);
-	if (!integer(arg) || is_dup(s, n))
+	if (!is_integer(arg) || is_dup(s, n))
 		return (1);
 	return (0);
 }

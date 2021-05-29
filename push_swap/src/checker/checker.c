@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 15:45:59 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/19 19:18:27 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/05/29 17:46:08 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		main(int argc, char **argv)
 		a = create_stack(INIT_LEN);
 		b = create_stack(INIT_LEN);
 		if (parse(a, argc, argv) == 0 &&
-				do_op(0, a, b) == 0)
+				operations_start(0, a, b) == 0)
 		{
 			if (is_sorted(a) && b->len == 0)
 				write(1, "OK\n", 3);
