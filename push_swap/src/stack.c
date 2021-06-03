@@ -6,15 +6,15 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 15:49:03 by seonggki          #+#    #+#             */
-/*   Updated: 2021/06/03 13:35:27 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/06/03 14:07:06 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack		*create_stack(int size)
+t_stack			*create_stack(int size)
 {
-	t_stack *s;
+	t_stack		*s;
 
 	s = (t_stack *)malloc(sizeof(t_stack));
 	if (!s)
@@ -30,9 +30,9 @@ t_stack		*create_stack(int size)
 	return (s);
 }
 
-t_stack 	*dup_stack(t_stack *s)
+t_stack			*dup_stack(t_stack *s)
 {
-	t_stack *res;
+	t_stack		*res;
 
 	res = create_stack(s->max_len);
 	res->len = s->len;
@@ -41,18 +41,18 @@ t_stack 	*dup_stack(t_stack *s)
 	return (res);
 }
 
-void	free_stack(t_stack *s)
+void			free_stack(t_stack *s)
 {
 	free(s->a);
 	free(s);
 }
 
-static int 	divide_pivot(t_stack *s, int start, int end)
+static int		divide_pivot(t_stack *s, int start, int end)
 {
-	int		i;
-	int		j;
-	int		pivot;
-	int		tmp;
+	int			i;
+	int			j;
+	int			pivot;
+	int			tmp;
 
 	i = start;
 	j = start;
@@ -74,9 +74,9 @@ static int 	divide_pivot(t_stack *s, int start, int end)
 	return (i);
 }
 
-void		quick_sort(t_stack *s, int start, int end)
+void			quick_sort(t_stack *s, int start, int end)
 {
-	int	pivot;
+	int			pivot;
 
 	if (end <= start)
 		return ;

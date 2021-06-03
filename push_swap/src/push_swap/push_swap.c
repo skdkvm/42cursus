@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 15:40:51 by seonggki          #+#    #+#             */
-/*   Updated: 2021/06/03 13:23:15 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/06/03 14:08:30 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void		solve_three(t_stack *a)
 void		solve_five(t_stack *a, t_stack *b)
 {
 	int		len;
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = dup_stack(a);
-	quick_sort(tmp, 0, tmp->len -1);
+	quick_sort(tmp, 0, tmp->len - 1);
 	len = a->len;
 	while (a->len != 3)
 	{
@@ -59,7 +59,6 @@ void		solve_five(t_stack *a, t_stack *b)
 		print_swap(a, "sa");
 	free_stack(tmp);
 }
-
 
 void		solve(t_stack *a, t_stack *b, t_stack *pivot)
 {
@@ -84,7 +83,7 @@ void		solve(t_stack *a, t_stack *b, t_stack *pivot)
 
 void		push_swap(t_stack *a, t_stack *b)
 {
-	t_stack *pivot;
+	t_stack	*pivot;
 
 	if (is_sorted(a))
 		return ;
@@ -104,8 +103,8 @@ void		push_swap(t_stack *a, t_stack *b)
 
 int			main(int argc, char **argv)
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
 
 	if (1 < argc)
 	{
