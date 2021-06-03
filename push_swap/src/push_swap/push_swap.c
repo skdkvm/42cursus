@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 15:40:51 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 18:41:04 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/06/03 13:23:15 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,12 +111,12 @@ int			main(int argc, char **argv)
 	{
 		a = create_stack(INIT_LEN);
 		b = create_stack(INIT_LEN);
-		if (parse(a, argc, argv) == 0)
+		if (parse(a, argc, argv) == EXIT_SUCCESS)
 			push_swap(a, b);
 		else
 			write(STDERR, "Error\n", 6);
 		free_stack(a);
 		free_stack(b);
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }

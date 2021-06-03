@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 15:47:19 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 18:34:19 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/06/03 13:28:12 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int			get_min_index(t_stack *s);
 int			get_max_index(t_stack *s);
 int			get_median(t_stack *s);
 
+void		print_string(char *str);
 void		print_push(t_stack *from, t_stack *to, char *str);
 void		print_swap(t_stack *s, char *str);
 void		print_rotate(t_stack *s, char *str);
@@ -62,7 +63,7 @@ void		print_both(void (*f)(), t_stack *a, t_stack *b, char *str);
 int			parse(t_stack *s, int argc, char **argv);
 int			operations_start(int fd, t_stack *a, t_stack *b);
 int			is_sorted(t_stack *s);
-void		both(void (*f)(), t_stack *a, t_stack *b);
+void		exec_both(void (*f)(), t_stack *a, t_stack *b);
 
 void		split_chunk(t_stack *pivot, t_stack *a);
 int			get_chunk_len(t_stack *pivot, t_stack *a);

@@ -6,17 +6,11 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:14:52 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 18:27:46 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/06/03 12:43:54 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	both(void (*f)(), t_stack *a, t_stack *b)
-{
-	f(a);
-	f(b);
-}
 
 void	push(t_stack *from, t_stack *to)
 {

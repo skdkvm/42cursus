@@ -7,6 +7,7 @@ D_PS	:=	$(D_SRC)push_swap/
 D_OBJ	:=	obj/
 D_INC	:=	include/
 D_LIBFT	:=	lib/libft/
+D_TEST	:=	$(addprefix $(D_SRC), test/)
 
 LIBFT	:=	$(addprefix $(D_LIBFT), libft.a)
 
@@ -16,6 +17,7 @@ SRC		:=	$(addsuffix .c, \
 			stack_element \
 			get_index \
 			instruction \
+			is_sorted \
 			)
 CH_SRC	:=	$(addsuffix .c, \
 			checker \
@@ -27,6 +29,7 @@ PS_SRC	:=	$(addsuffix .c, \
 			stack_a \
 			stack_b \
 			print_swap \
+			print_string \
 			)
 
 SRCS	:=	$(addprefix $(D_SRC), $(SRC))
@@ -91,5 +94,39 @@ fclean:		clean
 			@$(RM) $(NAME_CH) $(NAME_PS)
 
 re:			fclean all
+
+# unit test
+T_UTIL		:=	$(addprefix $(D_TEST), \
+				assert \
+				)
+T_PARSE		:=	$(addprefix $(D_TEST), test_parse)
+TS_PARSE	:=	$(addsuffix .c, $(T_PARSE) $(T_UTIL))
+TO_PARSE	:=	$(addsuffix .o, $(T_PARSE) $(T_UTIL))
+
+T_OP		:=	$(addprefix $(D_TEST), test_do_op)
+TS_OP		:=	$(addsuffix .c, $(T_OP) $(T_UTIL))
+TO_OP		:=	$(addsuffix .o, $(T_OP) $(T_UTIL))
+
+T_NAME		=	$(T_PARSE)
+T_NAME		+=	$(T_OP)
+
+T_OBJS		=	$(TO_PARSE)
+T_OBJS		+=	$(TO_OP)
+
+test:	$(D_OBJ) $(LIBFT) $(T_NAME)
+			@$(RM) $(T_NAME) $(T_OBJS)
+
+$(D_TEST)%.o:	$(D_TEST)%.c
+			@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+$(T_PARSE):	$(OBJS) $(TO_PARSE)
+			@$(CC) $(CFLAGS) $(SANITIZE) $(INC) $(LIB) -o $@ $^
+			@echo "\n$(GREEN)<$(notdir $@)>$(RESET)\n"
+			@./$@
+
+$(T_OP):	$(OBJS) $(D_OBJ)do_op.o $(TO_OP)
+			@$(CC) $(CFLAGS) $(SANITIZE) $(INC) $(LIB) -o $@ $^
+			@echo "\n$(GREEN)<$(notdir $@)>$(RESET)\n"
+			@./$@
 
 .PHONY:		all clean fclean re bonus test

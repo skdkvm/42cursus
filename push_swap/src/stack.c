@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 15:49:03 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 15:58:21 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/06/03 13:35:27 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	free_stack(t_stack *s)
 
 static int 	divide_pivot(t_stack *s, int start, int end)
 {
-	int	i;
-	int	j;
-	int	pivot;
-	int	tmp;
+	int		i;
+	int		j;
+	int		pivot;
+	int		tmp;
 
 	i = start;
 	j = start;
@@ -62,7 +62,7 @@ static int 	divide_pivot(t_stack *s, int start, int end)
 		if (s->a[j] < s->a[pivot])
 		{
 			tmp = s->a[i];
-			s->a[j] = s->a[j];
+			s->a[i] = s->a[j];
 			s->a[j] = tmp;
 			i++;
 		}
@@ -83,18 +83,4 @@ void		quick_sort(t_stack *s, int start, int end)
 	pivot = divide_pivot(s, start, end);
 	quick_sort(s, start, pivot - 1);
 	quick_sort(s, pivot + 1, end);
-}
-
-int			is_sorted(t_stack *s)
-{
-	int		i;
-
-	i = 1;
-	while (i < s->len)
-	{
-		if (s->a[i] < s->a[i - 1])
-			return (0);
-		i++;
-	}
-	return (1);
 }

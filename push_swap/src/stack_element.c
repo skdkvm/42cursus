@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:16:57 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/19 19:16:26 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/06/03 13:34:01 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 int		increase_stack(t_stack *s)
 {
 	int		*tmp;
-	int		len;
+	int		new_len;
 
-	len = s->max_len * 2;
-	tmp = (int *)malloc(sizeof(int) * len);
+	new_len = s->max_len * 2;
+	tmp = (int *)malloc(sizeof(int) * new_len);
 	if (!tmp)
 		return (1);
 	ft_memmove(tmp, s->a, s->len * sizeof(int));
 	free(s->a);
 	s->a = tmp;
-	s->max_len = len;
+	s->max_len = new_len;
 	return (0);
 }
 

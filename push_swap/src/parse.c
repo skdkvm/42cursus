@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:04:20 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 14:42:08 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/06/03 13:25:06 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ static int	check_arg(char *arg, t_stack *s, int n)
 	while (arg[i] && ft_isdigit(arg[i]))
 		i++;
 	if (arg[i] != '\0')
-		return (1);
+		return (EXIT_FAILURE);
 	if (!is_integer(arg) || is_dup(s, n))
-		return (1);
-	return (0);
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
 }
 
 static int	free_split(char **strs, int splitted)
@@ -73,12 +73,12 @@ static int	free_split(char **strs, int splitted)
 	int				i;
 
 	if (!splitted)
-		return (1);
+		return (EXIT_FAILURE);
 	i = 0;
 	while (strs[i])
 		free(strs[i++]);
 	free(strs);
-	return (1);
+	return (EXIT_FAILURE);
 }
 
 int			parse(t_stack *s, int argc, char **argv)
@@ -105,5 +105,5 @@ int			parse(t_stack *s, int argc, char **argv)
 		i++;
 	}
 	free_split(argv, splitted);
-	return (0);
+	return (EXIT_SUCCESS);
 }
