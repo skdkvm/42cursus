@@ -1,52 +1,93 @@
-NAME	=	libft.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/10/06 00:33:15 by seonggki          #+#    #+#              #
+#    Updated: 2020/10/22 19:23:02 by seonggki         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS	=	$(addsuffix .c, ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove \
-			ft_memchr ft_memcmp ft_strlen ft_strlcpy ft_strlcat ft_strchr \
-			ft_strrchr ft_strnstr ft_strncmp ft_atoi ft_isalpha ft_isdigit \
-			ft_isalnum ft_isascii ft_isprint ft_toupper ft_tolower ft_calloc \
-			ft_strdup ft_substr ft_strjoin ft_strtrim ft_split ft_itoa \
-			ft_strmapi ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd \
-			ft_lstnew ft_lstadd_front ft_lstadd_back ft_lstdelone ft_lstclear \
-			ft_lstsize ft_lstlast ft_lstiter ft_lstmap ft_lstsort \
-			ft_string_util ft_utoa ft_ultoa_base ft_putstr \
-			\
-			get_next_line)
+.SUFFIXES : .c .o
 
-D_OBJS	=	obj/
-OBJS	=	$(addprefix $(D_OBJS), $(SRCS:.c=.o))
+AR = ar
+ARFLAGS = rc
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror
-INC		=	-I./
-RM		=	rm -f
+NAME = libft.a
 
-GREEN	=	\033[32m
-YELLOW	=	\033[33m
-RESET	=	\033[0m
+SRCS = ft_strlen.c \
+		ft_strlcat.c \
+		ft_strlcpy.c \
+		ft_strchr.c \
+		ft_strrchr.c \
+		ft_strnstr.c \
+		ft_strncmp.c \
+		ft_memset.c \
+		ft_memcpy.c \
+		ft_bzero.c \
+		ft_memccpy.c \
+		ft_memmove.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_isalpha.c \
+		ft_isdigit.c \
+		ft_isalnum.c \
+		ft_isascii.c \
+		ft_isprint.c \
+		ft_tolower.c \
+		ft_toupper.c \
+		ft_strdup.c \
+		ft_calloc.c \
+		ft_atoi.c \
+		ft_substr.c \
+		ft_strjoin.c \
+		ft_strtrim.c \
+		ft_split.c \
+		ft_itoa.c \
+		ft_strmapi.c \
+		ft_putchar_fd.c \
+		ft_putstr_fd.c \
+		ft_putendl_fd.c \
+		ft_putnbr_fd.c \
 
-all:		$(D_OBJS) $(NAME)
+SRCS_B = ft_lstnew.c \
+			ft_lstadd_front.c \
+			ft_lstsize.c \
+			ft_lstlast.c \
+			ft_lstsize.c \
+			ft_lstadd_back.c \
+			ft_lstdelone.c \
+			ft_lstclear.c \
+			ft_lstiter.c \
+			ft_lstmap.c \
 
-bonus:		all
 
-$(NAME):	$(OBJS)
-			@echo "$(YELLOW)Build $(RESET)$(NAME)"
-			@ar rc  $(NAME) $(OBJS)
 
-$(D_OBJS)%.o:	%.c
-			@echo "$(GREEN)compiling :$(RESET)" $<
-			@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+OBJS = $(SRCS:.c=.o)
 
-$(D_OBJS):
-			@mkdir $(D_OBJS)
+OBJS_B = $(SRCS_B:.c=.o)
 
-clean:
-			@echo "$(YELLOW)-   Deleting all object from $(NAME)...$(RESET)"
-			@$(RM) -r $(D_OBJS)
+all : $(NAME)
 
-fclean:		clean
-			@echo "$(YELLOW)-   Deleting all excutable from $(NAME)...$(RESET)"
-			@$(RM) $(NAME)
+%.o : %.c
+	$(CC) $(CFLAGS) -c $(SRCS) $(SRCS_B)
 
-re:			fclean all
+$(NAME) : $(OBJS)
+	$(AR) $(ARFLAGS) $@ $^
 
-.PHONY:		all clean fclean re bonus
+bonus : $(NAME) $(OBJS_B)
+		$(AR) $(ARFLAGS) $(NAME) $(OBJS_B)
+
+clean :
+	rm -f $(OBJS) $(OBJS_B)
+
+fclean : clean
+	rm -f $(NAME)
+
+re : fclean all
+
+.PHONY : all clean fclean re

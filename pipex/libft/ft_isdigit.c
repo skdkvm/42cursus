@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 14:57:29 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 14:57:30 by seonggki         ###   ########.fr       */
+/*   Created: 2020/10/09 12:17:53 by seonggki          #+#    #+#             */
+/*   Updated: 2021/09/29 19:52:41 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c)
+#include "libft.h"
+
+int	ft_isdigit(int c)
 {
-	return (c >= '0' && c <= '9');
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
 }

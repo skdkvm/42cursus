@@ -3,33 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 14:58:57 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 14:58:58 by seonggki         ###   ########.fr       */
+/*   Created: 2020/10/22 15:32:21 by seonggki          #+#    #+#             */
+/*   Updated: 2021/09/29 19:54:47 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		mod;
+	unsigned int	nb;
 
-	mod = n % 10;
-	n /= 10;
-	if (n != 0)
-		ft_putnbr_fd(n, fd);
-	if (mod < 0)
+	if (n < 0)
 	{
-		if (n == 0)
-			write(fd, "-", 1);
-		mod = -mod + '0';
-		write(fd, &mod, 1);
+		ft_putchar_fd('-', fd);
+		n *= -1;
 	}
-	else
-	{
-		mod += '0';
-		write(fd, &mod, 1);
-	}
+	nb = (unsigned int)n;
+	if (nb >= 10)
+		ft_putnbr_fd(nb / 10, fd);
+	ft_putchar_fd(nb % 10 + 48, fd);
 }

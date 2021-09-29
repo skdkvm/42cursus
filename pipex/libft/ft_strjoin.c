@@ -3,30 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 14:59:26 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 14:59:27 by seonggki         ###   ########.fr       */
+/*   Created: 2020/10/12 20:13:01 by seonggki          #+#    #+#             */
+/*   Updated: 2021/09/29 19:55:23 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
+	size_t	s1_len;
+	size_t	s2_len;
 	char	*res;
-	size_t	len;
 
-	if (!s1 && !s2)
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	if (s1 == 0 || s2 == 0)
 		return (0);
-	if (!s1)
-		return (ft_strdup(s2));
-	if (!s2)
-		return (ft_strdup(s1));
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!(res = (char *)malloc(len)))
+	res = (char *)malloc(sizeof(char) * s1_len + s2_len + 1);
+	if (!res)
 		return (0);
-	ft_strlcpy(res, s1, len);
-	ft_strlcat(res, s2, len);
+	ft_strlcpy(res, s1, s1_len + 1);
+	ft_strlcat(res + (s1_len), s2, s2_len + 1);
 	return (res);
 }

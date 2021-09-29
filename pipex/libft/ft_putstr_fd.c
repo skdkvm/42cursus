@@ -3,19 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 14:59:01 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 14:59:02 by seonggki         ###   ########.fr       */
+/*   Created: 2020/10/22 15:19:42 by seonggki          #+#    #+#             */
+/*   Updated: 2020/10/22 15:27:37 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (!s)
+	if (!s || fd < 0)
 		return ;
 	while (*s)
-		write(fd, s++, 1);
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <tjdrlf0618@naver.com>            +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 14:58:40 by seonggki          #+#    #+#             */
-/*   Updated: 2021/09/29 19:41:45 by seonggki         ###   ########.fr       */
+/*   Created: 2020/10/08 15:25:37 by seonggki          #+#    #+#             */
+/*   Updated: 2021/09/29 19:54:42 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,28 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char		*d;
-	const unsigned char	*s;
+	size_t			i;
+	unsigned char	*dst2;
+	unsigned char	*src2;
 
-	if (!dst && !src)
+	dst2 = (unsigned char *)dst;
+	src2 = (unsigned char *)src;
+	i = 0;
+	if (dst == src || len == 0)
 		return (dst);
-	d = dst;
-	s = src;
-	if (s > d)
-		while (len--)
-			*d++ = *s++;
-	else
+	if (dst < src)
 	{
-		d += len - 1;
-		s += len - 1;
-		while (len--)
-			*d-- = *s--;
+		while (i < len)
+		{
+			dst2[i] = src2[i];
+			i++;
+		}
 	}
+	else
+		while (i < len)
+		{
+			dst2[len - i - 1] = src2[len - i - 1];
+			i++;
+		}
 	return (dst);
 }

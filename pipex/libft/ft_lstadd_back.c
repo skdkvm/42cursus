@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 14:57:43 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 14:57:44 by seonggki         ###   ########.fr       */
+/*   Created: 2020/10/22 17:21:44 by seonggki          #+#    #+#             */
+/*   Updated: 2021/09/29 19:52:49 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	if (!lst || !new)
-		return ;
-	if (!*lst)
-	{
+	t_list *temp;
+
+	temp = ft_lstlast(*lst);
+	if (temp)
+		temp->next = new;
+	else
 		*lst = new;
-		return ;
-	}
-	ft_lstlast(*lst)->next = new;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <tjdrlf0618@naver.com>            +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 14:58:15 by seonggki          #+#    #+#             */
-/*   Updated: 2021/09/29 19:41:13 by seonggki         ###   ########.fr       */
+/*   Created: 2020/10/22 15:43:36 by seonggki          #+#    #+#             */
+/*   Updated: 2021/09/29 19:54:22 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*res;
+	t_list	*list;
 
-	res = (t_list *)malloc(sizeof(t_list));
-	if (!res)
+	list = (t_list *)malloc(sizeof(t_list));
+	if (list == 0)
 		return (0);
-	res->content = content;
-	res->next = 0;
-	return (res);
+	list->content = content;
+	list->next = 0;
+	return (list);
 }

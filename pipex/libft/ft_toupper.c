@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 15:00:08 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 15:00:09 by seonggki         ###   ########.fr       */
+/*   Created: 2020/10/09 12:24:35 by seonggki          #+#    #+#             */
+/*   Updated: 2021/09/29 19:56:54 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_toupper(int c)
+#include "libft.h"
+
+int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
-		return (c + ('A' - 'a'));
+		c -= 32;
 	return (c);
 }

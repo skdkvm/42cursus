@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 14:56:48 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 14:56:49 by seonggki         ###   ########.fr       */
+/*   Created: 2020/10/07 19:23:37 by seonggki          #+#    #+#             */
+/*   Updated: 2021/09/29 19:52:35 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,12 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, 0, n);
+	char	*temp;
+
+	while (n--)
+	{
+		temp = (char *)s;
+		*temp = 0;
+		s++;
+	}
 }

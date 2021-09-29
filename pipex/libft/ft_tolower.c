@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 15:00:05 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 15:00:05 by seonggki         ###   ########.fr       */
+/*   Created: 2020/10/09 12:24:51 by seonggki          #+#    #+#             */
+/*   Updated: 2021/09/29 19:56:50 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_tolower(int c)
+#include "libft.h"
+
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
-		return (c + ('a' - 'A'));
+		c += 32;
 	return (c);
 }
