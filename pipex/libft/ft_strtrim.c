@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 21:52:52 by seonggki          #+#    #+#             */
-/*   Updated: 2021/09/29 20:00:29 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/09/29 20:26:53 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	s1_len = ft_strlen(s1);
 	while (s1_len && ft_strchr(set, s1[s1_len]))
 		s1_len--;
-	res = ft_substr((char*)s1, 0, s1_len + 1);
+	res = ft_substr((char *)s1, 0, s1_len + 1);
 	return (res);
 }

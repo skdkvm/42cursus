@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 18:55:49 by seonggki          #+#    #+#             */
-/*   Updated: 2021/09/29 19:56:45 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/09/29 20:27:41 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	s_len = ft_strlen(s);
+	res = malloc(sizeof(char) + 1);
 	if (s_len < start)
 	{
-		if (!(res = malloc(sizeof(char) + 1)))
+		if (!res)
 			return (0);
 		res[0] = '\0';
 		return (res);
