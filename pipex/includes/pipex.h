@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gcollet <gcollet@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/02 09:58:35 by gcollet           #+#    #+#             */
-/*   Updated: 2021/08/13 11:37:58 by gcollet          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
@@ -21,14 +10,15 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
-/* Mandatory functions */
 void	error(void);
 char	*find_path(char *cmd, char **envp);
 int		get_next_line(char **line);
 void	execute(char *argv, char **envp);
-
-/* Bonus functions */
+void	child_process(char **argv, char **envp, int *fd);
+void	parent_process(char **argv, char **envp, int *fd);
 int		open_file(char *argv, int i);
 void	usage(void);
+void	child_process_bonus(char *argv, char **envp);
+void	here_doc(char *limiter, int argc);
 
 #endif

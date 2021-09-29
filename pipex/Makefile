@@ -1,23 +1,12 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: gcollet <gcollet@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/07/08 11:07:37 by gcollet           #+#    #+#              #
-#    Updated: 2021/08/13 11:34:54 by gcollet          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 NAME 	= pipex.a
 PROG	= pipex
 
-SRCS 	= srcs/pipex.c srcs/utils.c
+SRCS 	= srcs/pipex.c srcs/utils.c srcs/process.c
 OBJS 	= ${SRCS:.c=.o}
 MAIN	= srcs/pipex.c
 
-SRCS_B	= srcs/pipex_bonus.c srcs/utils.c srcs/utils_bonus.c
+SRCS_B	= srcs/pipex_bonus.c srcs/process_bonus.c srcs/utils.c srcs/utils_bonus.c
 OBJS_B	= ${SRCS_B:.c=.o}
 MAIN_B	= srcs/pipex_bonus.c
 
@@ -35,7 +24,7 @@ $(NAME):	${OBJS}
 					@cp libft/libft.a ./$(NAME)
 					@ar -rcs ${NAME} ${OBJS}
 					@$(CC) $(NAME) ${MAIN} -o ${PROG}
-					@echo "\033[32mPipex Compiled! ᕦ(\033[31m♥\033[32m_\033[31m♥\033[32m)ᕤ\n"
+					@echo "\033[32mPipex Compiled\n"
 
 all: 		${NAME}
 
@@ -45,7 +34,7 @@ bonus:		${OBJS_B}
 					@cp libft/libft.a ./$(NAME)
 					@ar -rcs ${NAME} ${OBJS_B}
 					@$(CC) $(NAME) ${MAIN_B} -o ${PROG}
-					@echo "\033[32mPipex Compiled! ᕦ(\033[31m♥\033[32m_\033[31m♥\033[32m)ᕤ\n"
+					@echo "\033[32mPipex Compiled!\n"
 
 clean:
 					@make clean -C ./libft
@@ -55,7 +44,7 @@ fclean: 	clean
 					@make fclean -C ./libft
 					@rm -f $(NAME)
 					@rm -f ${PROG}
-					@echo "\n\033[31mDeleting EVERYTHING! ⌐(ಠ۾ಠ)¬\n"
+					@echo "\n\033[31mDeleting EVERYTHING!\n"
 
 re:			fclean all
 

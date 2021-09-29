@@ -1,19 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gcollet <gcollet@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/04 10:26:01 by gcollet           #+#    #+#             */
-/*   Updated: 2021/08/13 12:14:54 by gcollet          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/pipex.h"
 
-/* Function that will look for the path line inside the environment, will
- split and test each command path and then return the right one. */
 char	*find_path(char *cmd, char **envp)
 {
 	char	**paths;
@@ -38,15 +24,12 @@ char	*find_path(char *cmd, char **envp)
 	return (0);
 }
 
-/* A simple error displaying function. */
 void	error(void)
 {
 	perror("\033[31mError");
 	exit(EXIT_FAILURE);
 }
 
-/* Function that take the command and send it to find_path
- before executing it. */
 void	execute(char *argv, char **envp)
 {
 	char	**cmd;
@@ -56,7 +39,6 @@ void	execute(char *argv, char **envp)
 		error();
 }
 
-/* Function that will read input from the terminal and return line. */
 int	get_next_line(char **line)
 {
 	char	*buffer;
