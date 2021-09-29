@@ -1,32 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 14:59:26 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 14:59:27 by seonggki         ###   ########.fr       */
+/*   Created: 2021/05/29 15:00:14 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 15:00:15 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strjoin(const char *s1, const char *s2)
+static int	ft_ulen(unsigned int n)
+{
+	int		len;
+
+	len = 1;
+	while (n /= 10)
+		len++;
+	return (len);
+}
+
+static void	ft_chrcat(char *str, char c)
+{
+	str = ft_strchr(str, 0);
+	*str++ = c;
+	*str = 0;
+}
+
+static void	ft_putnbr_str(unsigned int n, char *str)
+{
+	int		tmp;
+
+	tmp = n % 10;
+	n /= 10;
+	if (n != 0)
+		ft_putnbr_str(n, str);
+	ft_chrcat(str, tmp + '0');
+}
+
+char		*ft_utoa(unsigned int n)
 {
 	char	*res;
-	size_t	len;
 
-	if (!s1 && !s2)
+	if (!(res = (char *)malloc(ft_ulen(n) + 1)))
 		return (0);
-	if (!s1)
-		return (ft_strdup(s2));
-	if (!s2)
-		return (ft_strdup(s1));
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!(res = (char *)malloc(len)))
-		return (0);
-	ft_strlcpy(res, s1, len);
-	ft_strlcat(res, s2, len);
+	*res = 0;
+	ft_putnbr_str(n, res);
 	return (res);
 }

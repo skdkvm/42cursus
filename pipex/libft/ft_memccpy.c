@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/07 19:34:40 by seonggki          #+#    #+#             */
-/*   Updated: 2020/10/08 12:40:54 by seonggki         ###   ########.fr       */
+/*   Created: 2021/05/29 14:58:27 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:58:28 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	size_t			i;
-	unsigned char	*dst2;
-	unsigned char	*src2;
-	unsigned char	c2;
+	unsigned char		*d;
+	const unsigned char	*s;
+	unsigned char		stop;
 
-	i = 0;
-	dst2 = (unsigned char *)dst;
-	src2 = (unsigned char *)src;
-	c2 = (unsigned char)c;
-	while (i < n)
+	d = dst;
+	s = src;
+	stop = c;
+	while (n--)
 	{
-		dst2[i] = src2[i];
-		if (src2[i] == c2)
-			return (dst2 + i + 1);
-		i++;
+		*d++ = *s++;
+		if (*(s - 1) == stop)
+			return (d);
 	}
 	return (0);
 }

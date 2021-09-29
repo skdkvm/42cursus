@@ -3,23 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/07 19:23:37 by seonggki          #+#    #+#             */
-/*   Updated: 2020/10/07 19:34:03 by seonggki         ###   ########.fr       */
+/*   Created: 2021/05/29 14:56:48 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:56:49 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	char	*temp;
-
-	while (n--)
-	{
-		temp = (char *)s;
-		*temp = 0;
-		s++;
-	}
+	ft_memset(s, 0, n);
 }

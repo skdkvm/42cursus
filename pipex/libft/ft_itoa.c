@@ -3,53 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/14 18:15:13 by seonggki          #+#    #+#             */
-/*   Updated: 2020/10/22 15:08:48 by seonggki         ###   ########.fr       */
+/*   Created: 2021/05/29 14:57:38 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:57:38 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t	ft_len(long long n)
+static int	ft_nlen(int n)
 {
-	size_t		i;
+	int		len;
 
-	i = 0;
-	if (n < 0)
-	{
-		n *= -1;
-		i++;
-	}
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
+	len = 1;
+	while (n /= 10)
+		len++;
+	return (len);
 }
 
-char			*ft_itoa(int n)
+static void	ft_chrcat(char *str, char c)
 {
-	char		*res;
-	size_t		len;
+	str = ft_strchr(str, 0);
+	*str++ = c;
+	*str = 0;
+}
 
-	len = ft_len(n);
-	if (!(res = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	res[len] = '\0';
-	if (n < 0)
-		res[0] = '-';
-	else if (n == 0)
-		res[0] = '0';
-	while (n != 0)
+static void	ft_putnbr_str(int n, char *str)
+{
+	int		tmp;
+
+	tmp = n % 10;
+	n /= 10;
+	if (n != 0)
+		ft_putnbr_str(n, str);
+	if (tmp < 0)
 	{
-		--len;
-		res[len] = '0' + n % 10 * (n < 0 ? -1 : 1);
-		n /= 10;
+		if (n == 0)
+			ft_chrcat(str, '-');
+		ft_chrcat(str, -tmp + '0');
 	}
+	else
+		ft_chrcat(str, tmp + '0');
+}
+
+char		*ft_itoa(int n)
+{
+	char	*res;
+	int		is_neg;
+
+	is_neg = n < 0 ? 1 : 0;
+	if (!(res = (char *)malloc(ft_nlen(n) + is_neg + 1)))
+		return (0);
+	*res = 0;
+	ft_putnbr_str(n, res);
 	return (res);
 }

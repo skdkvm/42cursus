@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/08 15:39:56 by seonggki          #+#    #+#             */
-/*   Updated: 2020/10/08 15:57:01 by seonggki         ###   ########.fr       */
+/*   Created: 2021/05/29 14:58:30 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:58:31 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*s2;
-	unsigned char	c2;
+	const unsigned char	*str;
+	unsigned char		ch;
 
-	s2 = (unsigned char *)s;
-	c2 = (unsigned char)c;
+	str = s;
+	ch = c;
 	while (n--)
 	{
-		if (*s2 == c2)
-			return (s2);
-		else
-			s2++;
+		if (*str == ch)
+			return ((void *)str);
+		str++;
 	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <tjdrlf0618@naver.com>            +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/22 18:57:46 by seonggki          #+#    #+#             */
-/*   Updated: 2020/10/22 19:02:45 by seonggki         ###   ########.fr       */
+/*   Created: 2021/05/29 14:58:05 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:58:05 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void		ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (lst == 0 || f == 0)
-		return ;
 	while (lst)
 	{
 		f(lst->content);

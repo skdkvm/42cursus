@@ -3,29 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <tjdrlf0618@naver.com>            +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 13:06:41 by seonggki          #+#    #+#             */
-/*   Updated: 2020/10/09 13:08:30 by seonggki         ###   ########.fr       */
+/*   Created: 2021/05/29 14:59:15 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:59:16 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char		*ft_strdup(const char *s)
 {
-	char	*str;
-	size_t	i;
+	char	*res;
+	size_t	size;
 
-	i = 0;
-	str = (char *)malloc(sizeof(char) * ft_strlen(s1) + 1);
-	if (str == 0)
+	size = ft_strlen(s) + 1;
+	if (!(res = (char *)malloc(size)))
 		return (0);
-	while (s1[i])
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	ft_strlcpy(res, s, size);
+	return (res);
+}
+
+char		*ft_strndup(const char *s, int n)
+{
+	char	*res;
+	int		i;
+
+	if (!s)
+		return (0);
+	if (!(res = (char *)malloc(n + 1)))
+		return (0);
+	i = 0;
+	while (n--)
+		res[i++] = *s++;
+	res[i] = 0;
+	return (res);
 }

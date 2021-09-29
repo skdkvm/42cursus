@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/06 05:04:11 by seonggki          #+#    #+#             */
-/*   Updated: 2020/10/09 14:47:15 by seonggki         ###   ########.fr       */
+/*   Created: 2021/05/29 14:59:12 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:59:13 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
+	while (*s != c)
 	{
-		if (s[i] == c)
-			return ((char *)s + i);
-		i++;
+		if (!*s)
+			return (0);
+		s++;
 	}
-	if (!c && s[i] == '\0')
-		return ((char *)s + i);
-	return (0);
+	return ((char *)s);
 }

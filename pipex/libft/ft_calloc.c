@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 13:19:02 by seonggki          #+#    #+#             */
-/*   Updated: 2020/10/09 13:25:06 by seonggki         ###   ########.fr       */
+/*   Created: 2021/05/29 14:56:54 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:56:55 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void		*ft_calloc(size_t count, size_t size)
 {
 	void	*res;
 
-	res = malloc(count * size);
-	if (res == 0)
+	if (!(res = malloc(count * size)))
 		return (0);
 	ft_bzero(res, count * size);
 	return (res);

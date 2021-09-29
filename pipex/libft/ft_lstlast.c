@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/22 16:43:23 by seonggki          #+#    #+#             */
-/*   Updated: 2020/10/22 16:46:54 by seonggki         ###   ########.fr       */
+/*   Created: 2021/05/29 14:58:08 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:58:10 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list		*ft_lstlast(t_list *lst)
 {
-	if (lst == 0)
+	if (!lst)
 		return (0);
 	while (lst->next)
 		lst = lst->next;

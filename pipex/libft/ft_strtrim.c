@@ -3,27 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/12 21:52:52 by seonggki          #+#    #+#             */
-/*   Updated: 2020/10/14 14:10:32 by seonggki         ###   ########.fr       */
+/*   Created: 2021/05/29 14:59:58 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:59:59 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_strtrim(char const *s1, char const *set)
+static int	to_find(const char c, const char *set)
 {
-	size_t		s1_len;
-	char		*res;
+	while (*set)
+		if (*set++ == c)
+			return (1);
+	return (0);
+}
 
-	if (!s1 || !set)
-		return (NULL);
-	while (*s1 && ft_strchr(set, *s1))
-		s1++;
-	s1_len = ft_strlen(s1);
-	while (s1_len && ft_strchr(set, s1[s1_len]))
-		s1_len--;
-	res = ft_substr((char*)s1, 0, s1_len + 1);
+char		*ft_strtrim(const char *s1, const char *set)
+{
+	char	*res;
+	int		start;
+	int		end;
+
+	if (!s1)
+		return (0);
+	start = 0;
+	while (s1[start] && to_find(s1[start], set))
+		start++;
+	end = ft_strlen(s1) - 1;
+	while (end > start && to_find(s1[end], set))
+		end--;
+	if (!(res = (char *)malloc(end - start + 2)))
+		return (0);
+	ft_strlcpy(res, s1 + start, end - start + 2);
 	return (res);
 }

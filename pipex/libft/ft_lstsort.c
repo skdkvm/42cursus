@@ -1,25 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_lstsort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/29 14:58:46 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 14:58:46 by seonggki         ###   ########.fr       */
+/*   Created: 2021/05/29 14:58:23 by seonggki          #+#    #+#             */
+/*   Updated: 2021/05/29 14:58:23 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+static void	swap_content(void **a, void **b)
 {
-	unsigned char	*p;
-	unsigned char	v;
+	void	*tmp;
 
-	p = b;
-	v = c;
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+void		ft_lstsort(t_list *lst, int (*cmp)(void *, void *))
+{
+	t_list	*start;
+	int		count;
+	int		len;
+
+	start = lst;
+	len = ft_lstsize(lst);
 	while (len--)
-		*p++ = v;
-	return (b);
+	{
+		count = len;
+		start = lst;
+		while (count-- && start->next)
+		{
+			if (cmp(start->content, start->next->content) > 0)
+				swap_content(&start->content, &start->next->content);
+			start = start->next;
+		}
+	}
 }
