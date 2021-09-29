@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 17:39:53 by seonggki          #+#    #+#             */
-/*   Updated: 2021/09/29 19:52:53 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/09/29 20:03:01 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_list *temp;
+	t_list	*temp;
 
 	if (lst == 0 || del == 0)
 		return ;

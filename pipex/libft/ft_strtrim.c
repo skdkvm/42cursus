@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 21:52:52 by seonggki          #+#    #+#             */
-/*   Updated: 2021/09/29 19:56:19 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/09/29 20:00:29 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t		s1_len;
-	char		*res;
+	size_t	s1_len;
+	char	*res;
 
 	if (!s1 || !set)
 		return (NULL);
