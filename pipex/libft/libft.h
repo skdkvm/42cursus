@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 20:38:11 by seonggki          #+#    #+#             */
-/*   Updated: 2021/09/29 20:34:21 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/09/29 20:42:00 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct	s_list
+typedef struct s_list
 {
-	void	*content;
+	void			*content;
 	struct s_list	*next;
-}	t_list;
+}				t_list;
 
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
@@ -29,7 +29,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack,
-				const char *needle, size_t len);
+			const char *needle, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *des, const void *src, size_t n);
