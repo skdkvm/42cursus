@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seonggki <tjdrlf0618@naver.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 14:58:23 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 14:58:23 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/09/29 19:41:34 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	swap_content(void **a, void **b)
 	*b = tmp;
 }
 
-void		ft_lstsort(t_list *lst, int (*cmp)(void *, void *))
+void	ft_lstsort(t_list *lst, int (*cmp)(void *, void *))
 {
 	t_list	*start;
 	int		count;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seonggki <seonggki@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seonggki <tjdrlf0618@naver.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/29 14:58:19 by seonggki          #+#    #+#             */
-/*   Updated: 2021/05/29 14:58:19 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/09/29 19:41:21 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
 	int		size;
 
