@@ -6,12 +6,13 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:20:08 by seonggki          #+#    #+#             */
-/*   Updated: 2021/09/29 20:01:23 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/09/30 14:52:23 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-
+/*파일 디스크립터로 자식 프로세스를 실행하는 메인 함수 
+"hero_doc" 문자열이 argv[1]에서 발견되는 경우 here_doc에서 실행*/
 int	main(int argc, char **argv, char **envp)
 {
 	int	i;

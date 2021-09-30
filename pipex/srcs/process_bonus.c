@@ -6,12 +6,13 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:20:34 by seonggki          #+#    #+#             */
-/*   Updated: 2021/09/29 20:01:28 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/09/30 14:57:52 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-
+/*포크와 파이프를 생성하고 파이프 내부에 출력을 넣는 자식 프로세스
+표준 입출력을 변경하고 exec명령어로 닫는 함수*/
 void	child_process_bonus(char *argv, char **envp)
 {
 	pid_t	pid;
@@ -35,7 +36,9 @@ void	child_process_bonus(char *argv, char **envp)
 		waitpid(pid, NULL, 0);
 	}
 }
-
+/*stdin에서 읽을 자식프로세스를 만드는 함수
+다음 출력을 내부에 넣을 때까지 gnl로 리미터 단어를 찾음
+주 프로세스는 파이프 파일 디스크립터에 대한 표준 입력을 변경함*/
 void	here_doc(char *limiter, int argc)
 {
 	pid_t	reader;

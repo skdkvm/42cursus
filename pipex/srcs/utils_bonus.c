@@ -6,12 +6,12 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 19:21:11 by seonggki          #+#    #+#             */
-/*   Updated: 2021/09/29 20:01:34 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/09/30 14:51:19 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-
+//인수가 잘못된 경우 오류 표시
 void	usage(void)
 {
 	ft_putstr_fd("\033[31mError: Bad argument\n\e[0m", 2);
@@ -19,7 +19,7 @@ void	usage(void)
 	ft_putstr_fd("    ./pipex here_doc <LIMITER> <cmd> <cmd1> <...> file\n", 1);
 	exit(EXIT_SUCCESS);
 }
-
+//플래그가 있는 파일을 여는 함수
 int	open_file(char *argv, int i)
 {
 	int	file;

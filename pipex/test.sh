@@ -17,7 +17,7 @@ make bonus > /dev/null
 
 echo -e $GREEN"SUCCESS"$NC
 
-echo -e "my${NL}name${NL}is${NL}cruella" > test_input
+echo -e "my${NL}name${NL}is${NL}seonggki" > test_input
 
 check_diff() {
 	RESULT=$(diff test_correct_output test_my_output)
@@ -33,7 +33,8 @@ check_diff() {
 	fi
 }
 
-
+#test_input에는 mynameisseonggki의 정보가 저장되어 있고 cat명령을 사용해 파일정보를 출력하고
+#리다이렉션을 사용하여 새로운 test_output 파일을 만들어서 저장
 < test_input cat | cat > test_correct_output
 ./pipex test_input cat cat test_my_output
 check_diff "1"
@@ -49,5 +50,17 @@ check_diff "3"
 < test_input cat 123 | cat > test_correct_output
 ./pipex test_input "cat 123" cat test_my_output
 check_diff "4"
+
+< test_input cat | ls -l | wc > test_correct_output
+./pipex test_input cat "ls -l" "wc" test_my_output
+check_diff "5"
+
+< test_input cat | ls | wc > test_correct_output
+./pipex test_input cat 'ls' 'wc' test_my_output
+check_diff "6"
+
+< test_input cat | ls -l | wc | cat > test_correct_output
+./pipex test_input cat "ls -l" "wc" cat test_my_output
+check_diff "7"
 
 rm test_input test_correct_output test_my_output
