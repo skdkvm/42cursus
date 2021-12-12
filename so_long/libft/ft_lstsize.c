@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/09 12:25:41 by seonggki          #+#    #+#             */
-/*   Updated: 2021/12/12 16:42:49 by seonggki         ###   ########.fr       */
+/*   Created: 2020/10/22 16:39:57 by seonggki          #+#    #+#             */
+/*   Updated: 2021/09/29 19:54:27 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_lstsize(t_list *lst)
 {
-	int	i;
-	int	sign;
-	int	res;
+	int	len;
 
-	i = 0;
-	sign = 1;
-	res = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	len = 0;
+	if (lst == 0)
+		return (0);
+	while (lst->next)
 	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		lst = lst->next;
+		len++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = (str[i] - '0') + (res * 10);
-		i++;
-	}
-	return (res * sign);
+	return (len + 1);
 }

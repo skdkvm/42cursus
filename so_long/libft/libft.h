@@ -6,16 +6,16 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 20:38:11 by seonggki          #+#    #+#             */
-/*   Updated: 2021/12/12 16:43:20 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/12/12 17:22:04 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <string.h>
 
 typedef struct s_list
 {
@@ -68,5 +68,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),
 			void (*del)(void *));
+t_list	*ft_lst_at(t_list **begin_list, unsigned int nbr);
 
 #endif

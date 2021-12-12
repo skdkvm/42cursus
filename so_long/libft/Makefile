@@ -6,7 +6,7 @@
 #    By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/06 00:33:15 by seonggki          #+#    #+#              #
-#    Updated: 2021/12/12 17:47:35 by seonggki         ###   ########.fr        #
+#    Updated: 2021/12/12 17:47:59 by seonggki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ SRCS_B = ft_lstnew.c \
 			ft_lstclear.c \
 			ft_lstiter.c \
 			ft_lstmap.c \
-
+			ft_lst_at.c \
 
 
 OBJS = $(SRCS:.c=.o)
@@ -76,7 +76,7 @@ all : $(NAME)
 %.o : %.c
 	$(CC) $(CFLAGS) -c $(SRCS) $(SRCS_B)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) $(OBJS_B)
 	$(AR) $(ARFLAGS) $@ $^
 
 bonus : $(NAME) $(OBJS_B)
