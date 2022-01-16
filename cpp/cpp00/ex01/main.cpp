@@ -1,4 +1,16 @@
-#include "phonebook.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/16 16:35:42 by seonggki          #+#    #+#             */
+/*   Updated: 2022/01/16 17:48:02 by seonggki         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Phonebook.hpp"
 
 int	main(void)
 {
@@ -8,13 +20,22 @@ int	main(void)
 	while (std::getline(std::cin, input))
 	{
 		if (input == "ADD")
-			return (0);
+		{
+			std::cout << "ADD START" << std::endl;
+			phonebook.addContact();
+		}
 		else if (input == "SEARCH")
-			return (0);
+		{
+			std::cout << "SEARCH START" << std::endl;
+			phonebook.searchContact();
+		}
 		else if (input == "EXIT")
+		{
+			std::cout << "Good Bye" << std::endl;
 			return (0);
+		}
 		else
-			std::cout << "INVALID COMMAND\n";
+			std::cout << "INVALID COMMAND" << std::endl;
 	}
 	return (0);
 }

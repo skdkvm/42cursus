@@ -1,0 +1,119 @@
+// echo 테스트
+echo $?                   // minishell = 0	                            // bash = 0
+echo $??                  // minishell = 0?	                            // bash = 0?
+echo ?                    // minishell = ?	                            // bash = ?
+echo ??                   // minishell = ??	                            // bash = ??
+echo $USERname            // minishell = '\n'만 출력                      // bash = '\n' 만 출력
+echo $USER name           // minishell = [사용자네임ex)sanoh] name	       //bash = [사용자네임ex)sanoh] name
+echo "$USER na"me         // minishell = [사용자네임ex)sanoh] name	       //bash = [사용자네임ex)sanoh] name
+echo '$USER na'me         // minishell = $USER name	                    // bash = $USER name
+echo hi$USER              // minishell = hi[사용자네임ex)sanoh]            // bash = hi[사용자네임ex)sanoh]
+echo hi"$USER"            // minishell = hi[사용자네임ex)sanoh]	           // bash = hi[사용자네임ex)sanoh]
+echo $USEEER              // minishell = '\n'만 출력	                  // bash = '\n'만 출력
+echo ?$USER               // minishell = ?[사용자네임ex)sanoh]	           // bash = ?[사용자네임ex)sanoh]
+echo hell"o"" "from " 42" // minishell = hello from  42	                // bash = hello from  42
+echo "$USER ?"            // minishell = [사용자네임ex)sanoh] ?	           // bash = 사용자네임ex)sanoh] ?
+echo $PATH----            // minishell = 환경변수 PATH---- 정보 출력         // bash = 환경변수 PATH---- 정보 출력
+echo ----$PATH            // minishell = 환경변수 ----PATH 정보 출력         // bash = 환경변수 ----PATH 정보 출력
+echo "'$PATH'"            // minishell = 환경변수 'PATH' 정보 출력           // bash = 환경변수 'PATH' 정보 출력         
+echo -n $USER
+
+//ls 테스트
+ls(현재 디렉토리나 파일의 정보를 출력) ok
+ls -l(현재 디렉토리 리스트 형식으로 출력) ok
+ls -al(현재 디렉토리 내의 모든 내용을 출력하는데, 출력 형식은 리스트 형식으로 출력) ok
+
+// quit, 반환값 테스트
+exit 33
+echo $? // minishell = 33   // bash = 33 //ok
+wrongcmd
+echo $? // minishell = 127  // bash = 127 //ok
+ls
+echo $? // minishell = 0    // bash = 0 //ok
+
+//연산자 테스트(산술 논리 관계 문자열)
+
+expr 4 + 1 //minishell = 5 //bash 5 //ok
+expr $? + $? = 2
+expr '5 * 3'= 문자열로 취급
+
+$ expr 5 '*' 2
+10
+$ expr 5 "*" 2
+10
+$ expr 5 \* 2
+10
+$ a=5
+$ expr $a = 5
+1
+$ echo $?
+0
+$ expr $a = 4
+0
+$ echo $?
+1
+$ expr $a = '5 * 3'
+0
+$ echo $?
+1
+
+'=' 연산은 좌우의 피연산자의 값이 같으면 1(true)을 출력하고 다르면 0(false)을 출력합니다.
+
+여기서 '출력'의 의미는 '리턴값'과 다른 것에 주의합니다.
+
+'출력'은 true의 경우 1이고, false의 경우 0입니다.
+
+하지만 '리턴은 true인 상황에서는 0이고 false인 상황에서는 1이지요.
+
+값에서 보면, '출력'과 '리턴값'은 서로 반대이기 때문에 헛갈릴 수밖에 없습니다.
+
+이렇게 된 연유는 '리턴값'에 대한 유닉스 고유의 정책때문입니다.
+
+유닉스에서는 에러없이 성공적으로 프로그램이 종료되면 '0'을 리턴합니다.
+
+문제가 있으면 '0' 외에 다른 값을 출력합니다.
+
+따라서 쉘스크립트에서도 '0'인 경우를 '성공'으로 판단합니다.
+
+// 잡다하게 섞은거
+
+< .shell_file cat                   // minishell = .shell_file 내용출력                        // bash = .shell_file 내용출력 //ok
+< .shell_file cat | grep H          // minishell = .shell_file grep 해당되는 내용 출력           // bash = .shell_file grep 해당되는 내용만 출력 //ok
+< .shell_file cat | grep H | wc     // minishell = (줄) (단어) (Bytes) grep 해당되는 내용 출력     // bash = (줄) (단어) (Bytes) grep 해당되는 내용 출력 //ok
+< .shell_file cat | grep H | wc -l  // minishell = (줄) grep 해당되는 내용 출력                   // bash = (줄) grep 해당되는 내용 출력 //ok
+cat < .shell_file                   // minishell = .shell_file 내용 출력                       // bash = .shell_file 내용 출력 //ok
+
+// 환경변수, export, unset
+env                                     // minishell = 환경변수 목록 출력       // bash = 환경변수 목록 출력 //ok
+
+./minishell
+env | grep SHLVL -> SHLVL 값 바껴야됨      // minishell = SHLVL=2              // bash = SHLVL=2 //ok
+export SHLVL=5(수정 되는지)                // minishell = SHLVL=5              // bash = SHLVL=5 //ok
+export a=b b=c c=d                      // minishell = a=b b=c c=d          // bash = a=b b=c c=d //ok
+export A=B B=C                          // minishell = A=B B=C              // bash = A=B B=C //ok
+unset a                                 // minishell = a 삭제                // bash = a 삭제 //ok
+unset b c A B                           // minishell = b c A B 삭제          // bash = b c A B 삭제 //ok
+
+// cd
+cd ~                                    // minishell = 아무것도 출력x HOME디렉토리 이동         // bash = 아무것도 출력x HOME디렉토리 이동 //ok
+cd                                      // minishell = 아무것도 출력x HOME디렉토리 이동         // bash = 아무것도 출력x HOME디렉토리 이동 //ok
+cd .									// minishell = 현재 디렉토리에 있음					// bash = 현재 디렉토리에 있음
+cd ..									// minishell = 상위 디렉토리로 이동					// bash = 상위 디렉토리로 이동
+
+// ctrl + [d, c, \] 테스트
+ctrl + d    // minishell = exit 출력후 minishell종료 // bash = exit 출력후 종료 //ok
+ctrl + c    // minishell = 아무것도 출력X newline    // bash = 아무것도 출력X newline //ok
+ctrl + \    // minishell = 아무동작X                // bash = 아무동작X //ok
+
+// pwd 테스트
+pwd  //  현재 작업중인 디렉토리 확인 //ok
+
+// PATH 테스트
+cd 
+cd C_course/minishell/includes/parser/
+
+// heredoc + append
+ls -al | cat > file1                            // minishell = file1에 리스트 내용이 저장되어 있음                               // bash = file1에 리스트 내용이 저장되어 있음 //ok
+<< eof cat >> file1                             // minishell = file1 기존 파일 내용 뒤에 기록됨(파일이 존재하지 않다면 새로 만들고 실행) // bash = file1 기존 파일 내용 뒤에 기록됨(파일이 존재하지 않다면 새로 만들고 실행) //ok
+<< eof cat > file1                              // minishell = file1의 기존 내용을 지우고 입력받은 내용으로 저장                    // bash = file1에 리스트 내용이 저장되어 있음 //ok
+cat <<'EOF' | sed 's/a/b/' sed의 치환 s명령어 사용시 // minishell = 입력받은 문자중 a문자가 들어왔을경우 전부 b로 치환                    // bash = 입력받은 문자중 a문자가 들어왔을경우 전부 b로 치환 //ok
