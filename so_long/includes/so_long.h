@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 16:44:24 by seonggki          #+#    #+#             */
-/*   Updated: 2021/12/12 18:24:40 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:21:53 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # include <sys/errno.h>
 # include <string.h>
+
 
 typedef struct s_texture
 {

@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 18:05:26 by seonggki          #+#    #+#             */
-/*   Updated: 2021/12/12 18:29:15 by seonggki         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:23:49 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,6 @@ void	ft_display(t_info *info)
 		close_error(NULL, info);
 	display_map(info);
 	mlx_hook(info->window_ptr, 2, 1L << 0, my_key_hook, info);
-	mlx_hook(info->window_ptr, 33, 1L << 17, close_game, info);
+	mlx_hook(info->window_ptr, 17, 1L << 17, close_game, info);
 	mlx_loop(info->mlx_ptr);
 }
