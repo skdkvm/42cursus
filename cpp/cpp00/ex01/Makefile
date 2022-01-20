@@ -14,12 +14,12 @@ NAME = phonebook
 
 CC = clang++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES = -I Phonebook.hpp -I Contact.hpp
 
-SRCS = Phonebook.cpp \
-		Contact.cpp \
+SRCS = phonebook.cpp \
+		contact.cpp \
 		main.cpp
 
 OBJS = $(SRCS:.cpp=.o)

@@ -10,13 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include "phonebook.hpp"
+static void	Help(void)
+{
+	std::cout << "Use ADD phonebook" << std::endl;
+	std::cout << "Use SEARCH phonebook" << std::endl;
+	std::cout << "Use EXIT to quit." << std::endl;
+}
 
 int	main(void)
 {
 	Phonebook	phonebook; 
 	std::string	input;
 	
+	Help();
 	while (std::getline(std::cin, input))
 	{
 		if (input == "ADD")

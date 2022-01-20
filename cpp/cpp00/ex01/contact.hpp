@@ -24,7 +24,7 @@ class Contact
             std::string last_name;
             std::string nick_name;
             std::string phone_number;
-            std::string secret;
+            std::string darkest_secret;
 
     public:
             Contact();
