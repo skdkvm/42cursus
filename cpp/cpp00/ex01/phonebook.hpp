@@ -12,7 +12,7 @@
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
-# include "contact.hpp"
+# include "Contact.hpp"
 # define maxContacts 8
 
 class Phonebook

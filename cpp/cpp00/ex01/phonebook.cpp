@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
 
 Phonebook::Phonebook(void)
 {
@@ -25,24 +25,24 @@ Phonebook::~Phonebook(void)
 void    Phonebook::addContact(void)
 {
     if (num_of_contact >= maxContacts - 1)
-            contacts[maxContacts - 1].fillContact(maxContacts - 1);
+            contacts[0].fillContact(0);
     else
     {
         num_of_contact++;
         contacts[num_of_contact].fillContact(num_of_contact);
     }
-    std::cout << std::endl;
+    std::cout << std::setw(17) << "FillContact OK" << std::endl;
 }
 
 static void     displayHeader(void)
 {
     std::string     header;
-    std::string     line(43, '-');
+    std::string     line(44, '-');
 
-    header += "      I   |";
-    header += " First Name|";
-    header += " Last Name|";
-    header += " Nickname";
+    header += "     Index|";
+    header += "First Name|";
+    header += "Last Name |";
+    header += "Nick name |";
     std::cout << header << std::endl << line << std::endl;
 }
 

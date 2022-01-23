@@ -18,8 +18,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES = -I Phonebook.hpp -I Contact.hpp
 
-SRCS = phonebook.cpp \
-		contact.cpp \
+SRCS = Phonebook.cpp \
+		Contact.cpp \
 		main.cpp
 
 OBJS = $(SRCS:.cpp=.o)

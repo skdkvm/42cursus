@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "contact.hpp"
+#include "Contact.hpp"
 
 Contact::Contact(void)
 {
+    index = 0;
     return ;
 }
 
@@ -22,9 +23,9 @@ Contact::~Contact(void)
     return ;
 }
 
-void    Contact::fillContact(int index)
+void    Contact::fillContact(int i)
 {
-    i = index;
+    index = i;
     std::cout << "fill the informations." << std::endl;
     std::cout << std::setw(17) << "First name  ";
     std::getline(std::cin, first_name);
@@ -52,7 +53,7 @@ static void printTenChar(std::string str)
 
 void    Contact::displayContact(void) const
 {
-    printTenChar(std::to_string(i));
+    printTenChar(std::to_string(index));
     std::cout << "|";
     printTenChar(first_name);
     std::cout << "|";

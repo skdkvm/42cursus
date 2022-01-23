@@ -19,7 +19,7 @@
 class Contact
 {
     private:
-            int         i;
+            int         index;
             std::string first_name;
             std::string last_name;
             std::string nick_name;
@@ -29,7 +29,7 @@ class Contact
     public:
             Contact();
             ~Contact();
-                void    fillContact(int index);
+                void    fillContact(int i);
                 void    displayContact(void) const;
                 void    displayContactDetails(void) const;
 };
