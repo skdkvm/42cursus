@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   Karen.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 15:34:14 by seonggki          #+#    #+#             */
-/*   Updated: 2022/01/29 18:36:31 by seonggki         ###   ########.fr       */
+/*   Created: 2022/01/29 15:31:21 by seonggki          #+#    #+#             */
+/*   Updated: 2022/01/29 16:40:24 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#ifndef KAREN_HPP
+# define KAREN_HPP
 
-HumanA::HumanA(std::string name, Weapon &weapon) : name(name), weapon(weapon)
-{
-}
+# include <iostream>
+# include <string>
 
-HumanA::~HumanA()
+class Karen
 {
-    
-}
+private:
+    void    debug( void );
+    void    info( void );
+    void    warning( void );
+    void    error( void );
+public:
+    Karen();
+    ~Karen();
+    void    complain( std::string level);
+};
 
-void    HumanA::setWeapon(Weapon &weapon)
-{
-    this->weapon = weapon;
-}
+typedef void    (Karen::*func)(void);
 
-void    HumanA::attack(void)
-{
-    std::cout << this->name << "attacks with his" << weapon.getType() << std::endl;
-}
+#endif

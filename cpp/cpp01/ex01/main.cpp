@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 17:30:48 by seonggki          #+#    #+#             */
-/*   Updated: 2022/01/24 18:11:46 by seonggki         ###   ########.fr       */
+/*   Updated: 2022/01/29 17:50:19 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main(void)
     int     N;
 
     N = 10;
-    horde = zombieHorde(N, "Legion");
+    horde = zombieHorde(N, "seonggki");
     for (int i = 0; i < N; i++)
     {
         horde[i].announce();

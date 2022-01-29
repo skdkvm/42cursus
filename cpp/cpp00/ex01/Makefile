@@ -6,13 +6,13 @@
 #    By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 16:35:45 by seonggki          #+#    #+#              #
-#    Updated: 2022/01/16 16:41:46 by seonggki         ###   ########.fr        #
+#    Updated: 2022/01/27 16:29:54 by seonggki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = phonebook
 
-CC = clang++
+CC = clang++ -std=c++98
 
 CFLAGS = -Wall -Wextra -Werror
 

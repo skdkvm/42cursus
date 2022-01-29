@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 15:34:14 by seonggki          #+#    #+#             */
-/*   Updated: 2022/01/29 18:36:31 by seonggki         ###   ########.fr       */
+/*   Created: 2022/01/29 15:31:22 by seonggki          #+#    #+#             */
+/*   Updated: 2022/01/29 16:09:41 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include "Karen.hpp"
 
-HumanA::HumanA(std::string name, Weapon &weapon) : name(name), weapon(weapon)
+int main(void)
 {
-}
-
-HumanA::~HumanA()
-{
+    Karen   k;
     
-}
-
-void    HumanA::setWeapon(Weapon &weapon)
-{
-    this->weapon = weapon;
-}
-
-void    HumanA::attack(void)
-{
-    std::cout << this->name << "attacks with his" << weapon.getType() << std::endl;
+    k.complain("DEBUG");
+    k.complain("INFO");
+    k.complain("WARNING");
+    k.complain("ERROR");
+    k.complain("invalid");
+    return (0);
 }

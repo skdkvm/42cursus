@@ -6,11 +6,11 @@
 #    By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/16 16:34:54 by seonggki          #+#    #+#              #
-#    Updated: 2022/01/16 16:35:37 by seonggki         ###   ########.fr        #
+#    Updated: 2022/01/27 16:30:15 by seonggki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC			= clang++ -Wall -Wextra -Werror
+CC			= clang++ -Wall -Wextra -Werror -std=c++98
 RM 			= rm -rf
 NAME 		= ./megaphone
 NAME_SHORT  = megaphone

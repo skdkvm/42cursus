@@ -6,7 +6,7 @@
 /*   By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 15:42:39 by seonggki          #+#    #+#             */
-/*   Updated: 2022/01/24 17:18:00 by seonggki         ###   ########.fr       */
+/*   Updated: 2022/01/29 17:15:08 by seonggki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 class Zombie
 {
     private:
-            std::string     name_;       // 멤버 변수
+            std::string     name_;
     public:
-            Zombie();                    // 생성자 1
-            Zombie(std::string str);     // 생성자 2
-            ~Zombie();                   // 소멸자
-            void    announce(void) const;// 멤버 함수(메서드)
+            Zombie();
+            Zombie(std::string str);
+            ~Zombie();
+            void    announce(void) const;
 };
 
 Zombie *newZombie(std::string name);

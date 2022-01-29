@@ -5,31 +5,27 @@
 #                                                     +:+ +:+         +:+      #
 #    By: seonggki <seonggki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/01/24 15:42:41 by seonggki          #+#    #+#              #
-#    Updated: 2022/01/27 16:07:08 by seonggki         ###   ########.fr        #
+#    Created: 2022/01/29 15:31:23 by seonggki          #+#    #+#              #
+#    Updated: 2022/01/29 16:14:09 by seonggki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = brainz
+NAME = Karen
 
 CC = clang++ -std=c++98
 
 CFLAGS = -Wall -Wextra -Werror
 
-INCLUDES = -I Zombie.hpp
-
-SRCS = newZombie.cpp \
-		randomChump.cpp \
-		Zombie.cpp \
-		main.cpp
+SRCS =	main.cpp \
+		Karen.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 %.o : %.cpp
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 all: $(NAME)
 
